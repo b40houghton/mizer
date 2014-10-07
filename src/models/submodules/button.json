@@ -1,0 +1,9 @@
+{
+	"name"    : "button",
+	"align"   : null,
+	"type"	  : "primary",
+	"size"    : null,
+	"content" : "Button",
+	"value"   : null,
+    "title"   : null
+}

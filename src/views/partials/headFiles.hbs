@@ -1,0 +1,75 @@
+		
+            <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+            <!--[if IE]>
+                <script src="/assets/scripts/vendor/html5shiv.js"></script>
+                <link rel="stylesheet" type="text/css" href="/assets/css/browsers/ie-oldie.css" />
+            <![endif]-->
+
+		<script>
+           // initialize the dc object
+        	var dc = {};
+
+			// js helper function for calling in module specific logic
+			dc.getModule = function(moduleArr,customData){
+				
+                // if arr has .css , pull out & write to head
+
+                // var cssFile = createdocumentelement('style');
+                //     style.href= ".css";
+
+                require(moduleArr, customData);
+
+
+                // require(moduleArr, function(returnedFn) {  
+
+                //    // cssFile.onload = function(){
+                //         if (customData) returnedFn(customData);
+                //    // }
+
+                   
+               	// });
+			};
+
+            // set breakpoints
+            dc.breakpoints = {
+                "mobile": 767,
+                "tablet":1024,
+                "desktop":1280,
+                "current":"desktop"
+            }
+
+			// virtual url placeholder for Google Analytics
+    		dc.gaVirtualUrl = 'virtual-url-string';
+
+    		// google analytics custom variables
+    		dc.gaCustomVars = {
+    			'dimension1'        : 'string',
+  				'dimension2'        : 'string',
+  				'dimension3'        : 'string',
+  				'dimension4'        : 'string',
+  				'dimension5'        : 'string',
+  				'dimension6'        : 'string',
+  				'dimension7'        : 'string'
+    		};
+           
+       </script>
+
+       <!-- Require.js script -->
+       <script data-main="/assets/scripts/main.js" src="/assets/scripts/vendor/require.js"></script> 
+       <!-- 
+       
+       
+       ----------------------------------
+       Build Notes
+       ----------------------------------
+       
+       Agency: Designory
+       Developer: 
+       Date: 2014-07-28
+       
+       -----------------
+       End Build Notes   
+       -----------------
+
+       -->

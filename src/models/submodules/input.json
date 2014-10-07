@@ -1,0 +1,10 @@
+{
+	"name"     		: "input",
+	"type"	   		: null,
+	"value"			: null,
+    "classes"   	: null,
+    "label"			: null,
+    "name"			: null,
+    "onError"		: null,
+    "placeholder"	:"H5 18px Lorem ipsum"
+}

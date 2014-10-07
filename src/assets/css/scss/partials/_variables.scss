@@ -1,0 +1,39 @@
+//colors
+$white: #ffffff;
+$black: #000000;
+$primaryPurple:#480a3c;
+$secondaryYellow:#ffcd00;
+
+//default body
+$backgroundColor:#d7d1c4;
+$bodyColor: $black;
+
+//default fonts
+$headingFont:'Lobster';
+$bodyFont:'Helvetica', Helvetica, Arial, sans-serif;
+
+//button colors
+$primaryBtnColor: $primaryPurple;
+$secondaryBtnColor: #666;
+$tertiaryBtnColor: #999;
+
+//link colors
+$primaryLinkColor: $primaryPurple;
+$secondaryLinkColor:#666;
+$tertiaryLinkColor: #999;
+
+//heading colors
+$headingPrimaryColor: $primaryPurple;
+$headingSecondaryColor: $secondaryYellow;
+$headingTertiaryColor:$secondaryYellow;
+
+
+//one pixel
+$onepx: 0.0625em;
+
+//major breakpoints
+$bp-small: 	20em; 	// 320px
+$bp-med: 	48em; 	// 768px 
+$bp-large: 	64em; 	// 1024px
+$bp-xl: 	72em; 	// 1152px
+$bp-xxl:	80em;	// 1280px

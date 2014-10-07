@@ -1,0 +1,18 @@
+
+
+
+
+{{#if label}}
+    <label>
+        <textarea class="{{classes}}" placeholder="{{placeholder}}" rows="{{rows}}" cols="{{columns}}"></textarea>
+        <span class="label-content">{{label}}<span>
+        {{#if onError}}
+            <span>{{onError}}</span>
+        {{/if}}
+    </label>
+{{else}}
+    <textarea class="{{classes}}" placeholder="{{placeholder}}" rows="{{rows}}" cols="{{columns}}"></textarea>
+    {{#if onError}}
+        <span class="error-msg">{{onError}}</span>
+    {{/if}}
+{{/if}}

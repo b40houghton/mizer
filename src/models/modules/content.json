@@ -1,0 +1,12 @@
+{
+	"name"		   	: "content",
+	"id"           	: "null",
+	"classes"      	: "no-margin-top clearfix",
+	"heading"		: false,
+	"subheading"	: false,
+	"paragraph"		: false,
+	"link"			: false,
+	"list"			: false,
+	"image"			: false,
+	"video"			: false
+}

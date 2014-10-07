@@ -1,0 +1,37 @@
+{
+  "name": "mizr",
+  "version": "0.0.1",
+  "engines": "v0.10.29",
+  "description": "Mizr is a modular approach to building lean, mean Front-End Templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.8.5",
+    "gulp": "^3.8.6",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-cache": "^0.2.1",
+    "gulp-compile-handlebars": "^0.2.0",
+    "gulp-concat": "^2.3.4",
+    "gulp-ftp": "^1.0.1",
+    "gulp-handlebars": "^2.1.0",
+    "gulp-imagemin": "^1.0.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-notify": "^1.5.0",
+    "gulp-plumber": "^0.6.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-rimraf": "^0.1.0",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-svg-sprites": "^1.0.0",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0",
+    "hbs": "^2.7.0",
+    "mkdirp": "^0.5.0",
+    "open": "0.0.5"
+  }
+}

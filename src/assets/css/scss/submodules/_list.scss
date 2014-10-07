@@ -1,0 +1,17 @@
+.link-list{
+    li{
+        margin:1.5em 0;
+
+        a{
+            transition: text-shadow 300ms;
+            @extend .link !optional;
+            font-weight: 300;
+            
+            @include bp-large-min{
+                &:hover{
+                    text-shadow: -0.125px 0 0 #333, 0.125px 0 0 #333;
+                }
+            }
+        }
+    }
+}

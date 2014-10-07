@@ -1,0 +1,44 @@
+.image{
+	position: relative;
+
+	.play{
+		display: none;
+
+		bottom:9%;
+		left:5%;
+		fill:$white;
+        & + img{
+            display: none;
+        }
+
+		@include bp-large-min{
+			bottom:7%;
+		}
+	}
+
+	&.video{
+		cursor:pointer;
+
+		.play{
+			display: block;
+			position: absolute;
+			filter: drop-shadow(0 0 10px #000);
+			height: 1.5em;
+			width:1.5em;
+			& + img{
+                display: block;
+            }
+            
+
+			@include bp-large-min{
+				height: 2.5em;
+				width: 2.5em;
+
+				transition: all 200ms;
+				&:hover{
+					fill:#333;
+				}
+			}
+		}
+	}
+}

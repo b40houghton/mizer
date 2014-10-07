@@ -1,0 +1,116 @@
+/* helper classes*/
+
+.hidden{
+    display:none;
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+.clearfix{
+    @include clearfix;
+}
+
+//image styles
+.image{
+    max-width: 100%;
+    height: auto;
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+.rounded{
+    @extend .image;
+    border-radius: 1em;
+    img{
+        border-radius: 1em;
+    }
+}
+.circle{
+    @extend .image;
+    border-radius: 50%;
+    img{
+        border-radius: 50%;
+    }
+}
+.thumbnail{
+    @extend .image;
+    padding:1%;
+    border:1px solid #eee;
+}
+
+//padding and margins overrides
+.no-margin{
+    margin:0!important;
+}
+.no-margin-top{
+    margin-top:0!important;
+}
+.no-margin-bottom{
+    margin-bottom: 0!important;
+}
+.margin-top{
+    margin-top:2em!important;
+}
+.margin-bottom{
+    margin-bottom:2em!important;
+}
+.no-padding{
+    padding:0!important;
+}
+.no-padding-top{
+    padding-top:0!important;
+}
+.no-padding-bottom{
+    padding-bottom:0!important;
+}
+.padding-top{
+    padding-top:2em!important;
+}
+.padding-bottom{
+    padding-bottom:2em!important;
+}
+
+//list
+.list-none{
+    list-style: none;
+    padding-left: 0;
+}
+
+//hide small - 320px to 768px
+.sm-hide{
+    @media only screen and (min-width:$bp-small) and (max-width: $bp-med){
+        display: none!important;  
+    }   
+}
+
+//hide med - 768px to 1024px
+.md-hide{
+    @media only screen and (min-width:$bp-med) and (max-width: $bp-large){
+        display: none!important;  
+    } 
+}
+
+//hide lg - 1025px
+.lg-hide{
+    @media only screen and (min-width:$bp-large + 0.0625em){
+        display: none!important;  
+    } 
+}
+
+//hide xl - 1152px
+.xl-hide{
+    @include bp-xl-min{
+        display: none!important;
+    }
+}
+
+//hide xxl - 1280px
+.xxl-hide{
+    @include bp-xxl-min{
+        display: none!important;
+    }
+}

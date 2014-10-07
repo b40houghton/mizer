@@ -1,0 +1,101 @@
+/* grid variables */
+$gridGutter: 1%;
+$gridCol: 12;
+
+[class*='grid-'] {
+    margin: 0 $gridGutter 1.875em;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    float: left;
+    [class*='grid-'] {
+        margin-bottom: 0;
+    }
+}
+
+//grid loop
+@for $i from 1 through $gridCol{
+    .grid-#{$i}{
+        width:percentage($i/$gridCol) - (2*$gridGutter);
+    }
+}
+
+//sm grid loop
+@include bp-small-min{
+    @for $i from 1 through $gridCol{
+        .sm-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+//med grid loop
+@include bp-med-min{
+    @for $i from 1 through $gridCol{
+        .md-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+//large grid loop
+@include bp-large-min{
+    @for $i from 1 through $gridCol{
+        .lg-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+.ie8{
+    @for $i from 1 through $gridCol{
+        .sm-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+
+    @for $i from 1 through $gridCol{
+        .md-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+    
+    @for $i from 1 through $gridCol{
+        .lg-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+//offset grid loop
+@for $i from 1 through $gridCol{
+    .offset-#{$i}{
+        margin-left:percentage($i/$gridCol) + ($gridGutter);
+    }
+}
+
+/* rows */
+.row{
+    @include clearfix;
+    margin:0 (-$gridGutter);
+}
+
+.equal-heights{
+    @extend .row;
+
+    @include bp-med-min{
+        display: flex;
+    }
+    
+}
+
+.module{
+    background:$white;
+    padding:2em;
+    line-height: 1.375em;
+    border-bottom: 2px solid #bfc0be;
+}
+
+.pull-left{
+    margin-left: 0;
+}

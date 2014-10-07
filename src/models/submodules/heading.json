@@ -1,0 +1,7 @@
+{
+	"name"			: "heading",
+	"align"			: "left",
+	"size"			: "h1",
+	"classes"		: null,
+	"content" 		: "Lorem two ipsum"
+}

@@ -1,0 +1,25 @@
+{{#if link}}
+    <a href="#" class="image {{classes}}">
+
+    {{#if lazy}}
+        <img class="lazy" src="/assets/images/blank.gif" data-src={{source}} />
+    {{else}}
+        <img src={{source}} />
+    {{/if}}
+        <svg class="icon play">
+            <use xlink:href="/assets/images/svg/symbols.svg#Play"></use>
+        </svg>
+    </a>
+{{else}}
+    <div class="image {{classes}}">
+    {{#if lazy}}
+        <img class="lazy" src="/assets/images/blank.gif" data-src={{source}} />
+    {{else}}
+        <img src={{source}} />
+    {{/if}}
+        <svg class="icon play">
+            <use xlink:href="/assets/images/svg/symbols.svg#Play"></use>
+        </svg>
+    </div>
+{{/if}}
+
