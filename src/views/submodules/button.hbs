@@ -1,1 +1,27 @@
+<!--
+
+    <================>
+     Button SubModule
+    <================>
+
+    Description:
+        The button submodule is used to pull in various button configurations. 
+        Many default styles can be applied with the below being default.
+
+        ** Styles found in styles/scss/submodules/_button.scss **
+
+    Defaults:
+        {
+            "name"    : "button",   // default class name
+            "classes" : null,       // wide, btn-close, btn-back
+            "type"    : "primary",  // secondary, tertiary
+            "size"    : null,       // xx-small, x-small, small, large, x-large
+            "content" : "Button"    // button content
+        }
+        
+    Call:
+
+        {{$ 'button' classes='' type='' size='' content='' }}
+
+-->
 <button class="{{name}} {{type}} {{size}} {{classes}}">{{content}}</button>

@@ -33,17 +33,64 @@
 					<div class="grid-12">
 						<h1>Mizer</h1>
 						{{$ 'paragraph'}}
+                        
 					</div>
 				</div>
+                <div class="row">
+                    <div class="sm-grid-12 module">
+                        <h2>Get started:</h2>
+                        <p>Pre-reqs</p>
+                        <ul>
+                            <li>Ruby Sass</li>
+                            <li>Global Gulp</li>
+                        </ul>
+                        <code>npm install</code>
+                        <p>Or</p>
+                        <code>sudo npm install</code>
+                    </div>
+                </div>
 				<div class="row equal-heights">
 					<div class="sm-grid-12 md-grid-6 module">
-						{{$ 'heading' size="h2"}}
-						{{$ 'paragraph'}}
-                        {{$ 'link'}}
+						{{$ 'heading' size="h3" content="Button Sub-module"}}
+						{{$ 'paragraph' content="Button Description"}}
+                        
+                        <div class="row">
+                            <div class="sm-grid-12">
+                                <code> &#123;&#123;$ 'button' type='secondary' &#125;&#125;</code>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="sm-grid-12 margin-bottom">
+                                {{$ 'button' content="Button Primary"}}
+                                {{$ 'button' type="secondary" content="Button Secondary"}}
+                                {{$ 'button' type="tertiary" content="Button Tertiary"}}
+                            </div>
+                        </div>
+                        
 
+                        <div class="row">
+                            <div class="sm-grid-12">
+                                <code> &#123;&#123;$ 'button' size="xx-small" &#125;&#125;</code>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="sm-grid-12">
+                                {{$ 'button' content="Button XX-Small" size="xx-small"}}
+                                {{$ 'button' content="Button X-Small" size="x-small"}}
+                                {{$ 'button' content="Button Small" size="small"}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="sm-grid-12">
+                                {{$ 'button' content="Button Regular"}}
+                                {{$ 'button' content="Button Large" size="large"}}
+                                {{$ 'button' content="Button X-Large" size="x-large"}}
+                            </div>
+                        </div>
 					</div>
 					<div class="sm-grid-12 md-grid-6 module">
-						{{$ 'heading' size="h2"}}
+						{{$ 'heading' size="h3"}}
                         {{$ 'paragraph'}}
                         {{$ 'link'}}
 					</div>
