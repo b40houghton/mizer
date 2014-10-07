@@ -1,4 +1,4 @@
-define(["main", "jquery", "lib/navigation", "vendor/modernizr", "lib/share"], function($) {
+define(["main", "jquery", "vendor/modernizr"], function($) {
 
     var $ = jQuery,
         allowScroll = true;
@@ -135,14 +135,6 @@ define(["main", "jquery", "lib/navigation", "vendor/modernizr", "lib/share"], fu
     //pass off scroll to scroll throttle
     $(window).off('scroll').on('scroll', function(e) {
         if (allowScroll) scollThrottle();
-    });
-
-    //initialize the navigation
-    $("#global-nav a").fancyNavigation();
-
-    $("#share").shareContent({
-        "linkedIn": true,
-        "twitter": true
     });
     
     // on DOM ready logic
