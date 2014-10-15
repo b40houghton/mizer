@@ -14,7 +14,14 @@ html{
     box-sizing: inherit; 
 }
 
-
+code{
+    background:$black;
+    color:$white;
+    padding:1em;
+    display: block;
+    margin:1em 0;
+    border-radius:0.5em;
+}
 
 .container{
     width:95%;

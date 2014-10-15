@@ -47,26 +47,6 @@ $gridCol: 12;
     }
 }
 
-.ie8{
-    @for $i from 1 through $gridCol{
-        .sm-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-
-    @for $i from 1 through $gridCol{
-        .md-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-    
-    @for $i from 1 through $gridCol{
-        .lg-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-}
-
 //offset grid loop
 @for $i from 1 through $gridCol{
     .offset-#{$i}{

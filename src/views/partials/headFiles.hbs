@@ -3,6 +3,7 @@
 
             <!--[if IE]>
                 <script src="/assets/scripts/vendor/html5shiv.js"></script>
+                <script src="/assets/scripts/vendor/respond.js"></script>
                 <link rel="stylesheet" type="text/css" href="/assets/css/browsers/ie-oldie.css" />
             <![endif]-->
 
@@ -11,25 +12,7 @@
         	var dc = {};
 
 			// js helper function for calling in module specific logic
-			dc.getModule = function(moduleArr,customData){
-				
-                // if arr has .css , pull out & write to head
-
-                // var cssFile = createdocumentelement('style');
-                //     style.href= ".css";
-
-                require(moduleArr, customData);
-
-
-                // require(moduleArr, function(returnedFn) {  
-
-                //    // cssFile.onload = function(){
-                //         if (customData) returnedFn(customData);
-                //    // }
-
-                   
-               	// });
-			};
+			dc.getModule = function(moduleArr,customData){require(moduleArr, customData);};
 
             // set breakpoints
             dc.breakpoints = {

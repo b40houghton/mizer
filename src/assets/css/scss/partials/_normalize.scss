@@ -22,40 +22,22 @@ $heading_font:$headingFont !default;
 $normalize_headings: true !default;
 
 //h1 font-sizes
-$h1_font_size: 2.25em !default;
-$h1_font_size_sm: 2.25em !default;
-$h1_font_size_md: 2.25em !default;
-$h1_font_size_lg: 2.25em !default;
+$h1_font_size: 4em !default;
 
 //h2 font-sizes
-$h2_font_size: 3.75em !default;
-$h2_font_size_sm: 3.75em !default;
-$h2_font_size_md: 3.75em !default;
-$h2_font_size_lg: 3.75em !default;
+$h2_font_size: 2em !default;
 
 //h3 font-sizes
-$h3_font_size: 3em !default;
-$h3_font_size_sm: 2.25em !default;
-$h3_font_size_md: 2.25em !default;
-$h3_font_size_lg: 3em !default;
+$h3_font_size: 1.75em !default;
 
 //h4 font-sizes
 $h4_font_size: 1.5em !default;
-$h4_font_size_sm: 1.5em !default;
-$h4_font_size_md: 1.5em !default;
-$h4_font_size_lg: 1.5em !default;
 
 //h5 font-sizes
-$h5_font_size: 1.125em !default;
-$h5_font_size_sm: 1.125em !default;
-$h5_font_size_md: 1.125em !default;
-$h5_font_size_lg: 1.125em !default;
+$h5_font_size: 1.25em !default;
 
 //h6 font-sizes
-$h6_font_size: 0.75em !default;
-$h6_font_size_sm: 0.75em !default;
-$h6_font_size_md: 0.75em !default;
-$h6_font_size_lg: 0.75em !default;
+$h6_font_size: 1.125em !default;
 
 $h1_margin: 0 !default;
 $h2_margin: 0 !default;
@@ -71,12 +53,12 @@ $h4_color:#333 !default;
 $h5_color:#333 !default;
 $h6_color:#333 !default;
 
-$h1_lineheight:1em !default;
-$h2_lineheight:1em !default;
-$h3_lineheight:1.2em !default;
-$h4_lineheight:1em !default;
-$h5_lineheight:1em !default;
-$h6_lineheight:1em !default;
+$h1_lineheight:normal !default;
+$h2_lineheight:normal !default;
+$h3_lineheight:normal !default;
+$h4_lineheight:normal !default;
+$h5_lineheight:normal !default;
+$h6_lineheight:normal !default;
 
 $background: $backgroundColor !default;
 $color: $bodyColor !default;
@@ -212,8 +194,8 @@ a {
 // Addresses font sizes within 'section' and 'article' in FF4+, Chrome, S5
 
 @if $normalize_headings == true {
-    h1,
-    .heading-1{
+    
+    .h1{
         font-size: $h1_font_size;
         font-family: $heading_font;
         margin: $h1_margin;
@@ -222,8 +204,7 @@ a {
         color:$h1_color;
     }
 
-    h2,
-    .heading-2{
+    .h2{
         font-size: $h2_font_size;
         font-family: $heading_font;
         margin: $h2_margin;
@@ -232,9 +213,8 @@ a {
         color:$h2_color;
     }
 
-    h3,
-    .heading-3{
-        font-size: $h3_font_size_sm;
+    .h3{
+        font-size: $h3_font_size;
         font-family: $heading_font;
         margin: $h3_margin;
         font-weight: $font_extralight;
@@ -242,8 +222,7 @@ a {
         color:$h3_color;
     }
 
-    h4,
-    .heading-4{
+    .h4{
         font-size: $h4_font_size;
         font-family: $heading_font;
         margin: $h4_margin;
@@ -252,8 +231,7 @@ a {
         color:$h4_color;
     }
 
-    h5,
-    .heading-5{
+    .h5{
         font-size: $h5_font_size;
         font-family: $heading_font;
         margin: $h5_margin;
@@ -261,9 +239,8 @@ a {
         line-height: $h5_lineheight;
         color:$h5_color;
     }
-
-    h6,
-    .heading-6{
+    
+    .h6{
         font-size: $h6_font_size;
         font-family: $heading_font;
         margin: $h6_margin;

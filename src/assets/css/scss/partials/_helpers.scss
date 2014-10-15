@@ -12,6 +12,14 @@
     @include clearfix;
 }
 
+.text-right{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
 //image styles
 .image{
     max-width: 100%;
@@ -43,6 +51,11 @@
 }
 
 //padding and margins overrides
+
+.margin{
+    margin:1em!important;
+}
+
 .no-margin{
     margin:0!important;
 }
@@ -58,6 +71,11 @@
 .margin-bottom{
     margin-bottom:2em!important;
 }
+
+.padding{
+    padding:1em!important;
+}
+
 .no-padding{
     padding:0!important;
 }
@@ -83,22 +101,22 @@
 //hide small - 320px to 768px
 .sm-hide{
     @media only screen and (min-width:$bp-small) and (max-width: $bp-med){
-        display: none!important;  
-    }   
+        display: none!important;
+    }
 }
 
 //hide med - 768px to 1024px
 .md-hide{
     @media only screen and (min-width:$bp-med) and (max-width: $bp-large){
-        display: none!important;  
-    } 
+        display: none!important;
+    }
 }
 
 //hide lg - 1025px
 .lg-hide{
     @media only screen and (min-width:$bp-large + 0.0625em){
-        display: none!important;  
-    } 
+        display: none!important;
+    }
 }
 
 //hide xl - 1152px
