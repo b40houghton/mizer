@@ -1,7 +1,7 @@
 {
 	"name"		   	: "content",
-	"id"           	: "null",
-	"classes"      	: "no-margin-top clearfix",
+	"id"           	: null,
+	"classes"      	: null,
 	"heading"		: false,
 	"subheading"	: false,
 	"paragraph"		: false,

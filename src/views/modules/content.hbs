@@ -1,41 +1,15 @@
-{{#mzr-module name="content"}}
+<div class="margin-bottom padding content{{#equals align 'right'}} text-right{{/equals}}">
 
-	{{#if image}}
-		<div class="image-wrapper">
-			{{$ 'image' source=''}}
-		</div>
-	{{/if}}
+    {{$ 'heading' size='h2' content="This is a Module"}}
+    <hr />
 
-	{{#if video}}
-		<div class="image-wrapper">
-			{{$ 'image' classes="video"}}
-		</div>
-	{{/if}}
-
-	<div class="content-wrapper">
-
-		{{#if heading}}
-			{{{$ 'heading' content="H3 Headline 48px" size="h3"}}}
-		{{/if}}
-
-		{{#if subheading}}
-			{{{$ 'heading' content="H4 Subhead" size="h4" classes="subhead"}}}
-		{{/if}}
-
-		{{#if paragraph}}
-			{{{$ 'paragraph' content="Body copy 16px.  ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dolor pellentesque, dictum dolor lobortis, congue leo. Pellentesque aliquet diam a quam varius dapibus. Donec tortor augue, tristique ac accumsan at, ullamcorper ut magna. Morbi viverra consectetur dapibus. Fusce id vehicula arcu, non porttitor arcu. Phasellus fermentum interdum ante, non interdum nunc consequat nec. Sed tortor urna, pharetra at vehicula mattis, porttitor eget arcu. Donec ut justo urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse laoreet ante ac faucibus facilisis. Aenean vitae odio sit amet eros hendrerit porttitor. Aliquam laoreet, magna sed gravida iaculis, odio elit vestibulum velit, sed ornare lorem tellus id sem."}}}
-		{{/if}}
-
-		{{#if list}}
-			{{{$ 'list'}}}
-		{{/if}}
-
-		{{#if link}}
-			{{{$ 'link'}}}
-		{{/if}}
-	
-	</div>
-
-{{/mzr-module}}
+    {{#if image}}
+        {{$ 'image' classes='rounded'}}
+    {{/if}}
 
 
+    {{$ 'paragraph'}}
+	{{$ 'link' content="Module Link"}}
+    <hr />
+
+</div>
