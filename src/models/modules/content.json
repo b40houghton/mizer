@@ -2,11 +2,6 @@
 	"name"		   	: "content",
 	"id"           	: null,
 	"classes"      	: null,
-	"heading"		: false,
-	"subheading"	: false,
-	"paragraph"		: false,
-	"link"			: false,
-	"list"			: false,
-	"image"			: false,
-	"video"			: false
+	"align"			: "left",
+	"image"			: false
 }
