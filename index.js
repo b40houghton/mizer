@@ -287,6 +287,15 @@ hbs.registerHelper('list', function(num, options){
     return ret;
 });
 
+/* equals helper */
+hbs.registerHelper('equals', function(param1, param2, options){
+	if(param1 === param2){
+		return options.fn(this);
+	} else{
+		return options.inverse(this);
+	}
+});
+
 /* render any requested assets */
 app.use(express.static(__dirname + '/src'));
 
