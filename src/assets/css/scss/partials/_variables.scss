@@ -18,9 +18,9 @@ $secondaryBtnColor: #666;
 $tertiaryBtnColor: #999;
 
 //link colors
-$primaryLinkColor: $primaryPurple;
-$secondaryLinkColor:#666;
-$tertiaryLinkColor: #999;
+$primaryLinkColor: #666666;
+$secondaryLinkColor:#666666;
+$tertiaryLinkColor: #999999;
 
 //heading colors
 $headingPrimaryColor: $primaryPurple;
@@ -31,8 +31,9 @@ $headingTertiaryColor:$secondaryYellow;
 //one pixel
 $onepx: 0.0625em;
 
-//major breakpoints
-$bp-small: 	20em; 	// 320px
+//major breakpoints in 16px based ems
+$bp-xs: 	20em; 	// 320px
+$bp-small:	30em;	// 480px
 $bp-med: 	48em; 	// 768px 
 $bp-large: 	64em; 	// 1024px
 $bp-xl: 	72em; 	// 1152px

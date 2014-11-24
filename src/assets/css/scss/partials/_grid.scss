@@ -4,17 +4,16 @@ $gridCol: 12;
 
 [class*='grid-'] {
     margin: 0 $gridGutter 1.875em;
-    overflow: hidden;
     display: inline-block;
     position: relative;
     float: left;
-    [class*='grid-'] {
-        margin-bottom: 0;
-    }
+    transition: width 300ms;
 }
 
-//grid loop
+
+//xs grid and default grid loop
 @for $i from 1 through $gridCol{
+    .xs-grid-#{$i},
     .grid-#{$i}{
         width:percentage($i/$gridCol) - (2*$gridGutter);
     }
@@ -47,35 +46,76 @@ $gridCol: 12;
     }
 }
 
-//offset grid loop
+//x-large grid loop
+@include bp-xl-min{
+    @for $i from 1 through $gridCol{
+        .xl-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+//xx-large grid loop
+@include bp-xxl-min{
+	@for $i from 1 through $gridCol{
+        .xxl-grid-#{$i}{
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+        }
+    }
+}
+
+
+//offset offset loop
 @for $i from 1 through $gridCol{
     .offset-#{$i}{
         margin-left:percentage($i/$gridCol) + ($gridGutter);
     }
 }
+//sm offset loop
+@include bp-small-min{
+    @for $i from 1 through $gridCol{
+        .sm-offset-#{$i}{
+            margin-left:percentage($i/$gridCol) + ($gridGutter);
+        }
+    }
+}
 
-/* rows */
+//med offset loop
+@include bp-med-min{
+    @for $i from 1 through $gridCol{
+        .md-offset-#{$i}{
+            margin-left:percentage($i/$gridCol) + ($gridGutter);
+        }
+    }
+}
+
+//large offset loop
+@include bp-large-min{
+    @for $i from 1 through $gridCol{
+        .lg-offset-#{$i}{
+            margin-left:percentage($i/$gridCol) + ($gridGutter);
+        }
+    }
+}
+
+//container
+.container{
+    width:95%;
+    margin:0 auto;
+    position: relative;
+    
+    @include custom-bp-min($bp-xxl + 4em){
+        width:$bp-xxl;
+    }
+}
+
+//rows
 .row{
     @include clearfix;
     margin:0 (-$gridGutter);
-}
-
-.equal-heights{
-    @extend .row;
-
-    @include bp-med-min{
-        display: flex;
+    &.equal-heights{
+    	@include bp-med-min{
+	        display: flex;
+	    }
     }
-    
-}
-
-.module{
-    background:$white;
-    padding:2em;
-    line-height: 1.375em;
-    border-bottom: 2px solid #bfc0be;
-}
-
-.pull-left{
-    margin-left: 0;
 }

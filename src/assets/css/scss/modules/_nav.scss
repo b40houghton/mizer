@@ -1,0 +1,14 @@
+nav{
+    ul{
+        @extend .list-none;
+
+        li{
+            display: inline-block;
+            float: left;
+            margin:0 1em;
+            a{
+
+            }
+        }
+    }
+}
