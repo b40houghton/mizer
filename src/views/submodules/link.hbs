@@ -1,1 +1,22 @@
-<a href="{{href}}" class="link {{classes}}">{{content}}</a>
+<!--
+	============================
+		Options:
+	============================
+
+		- href		: defines the link href attribute
+		- classes 	: defines additional classes to add
+		- title 	: defines title content, if left blank will fill with default content
+		- content 	: defines content of link
+		- previous 	: determines positioning of arrow icon and direction
+
+-->
+
+<a href="{{href}}" class="link{{#if classes}} {{classes}}{{/if}}" title="{{#if title}}{{title}}{{else}}{{content}}{{/if}}">
+{{#if previous}}
+	<i class="fa fa-angle-left"></i>
+	{{content}}  
+{{else}}
+	{{content}}  
+	<i class="fa fa-angle-right"></i>
+{{/if}}
+</a>

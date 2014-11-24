@@ -7,7 +7,7 @@
 <head>
 
 	<!-- page title tag -->
-	<title>[page title]</title>
+	<title>SubModules | Mizer</title>
 	<!-- page meta tags -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -31,114 +31,106 @@
 			<div class="container clearfix">
 				<div class="row">
 					<div class="grid-12">
-						<h1 class="h1">Mizer</h1>
-						{{$ 'paragraph' content="Mizr is a modular approach to building lean, mean Front-End Templates developed and maintained by a small group of developers at The Designory, Inc."}}
-
+						<h1 class="h1">Mizer SubModules</h1>
 					</div>
 				</div>
                 <div class="row">
-                    <div class="sm-grid-12 module">
-                        <h2 class="h2">Let's get started:</h2>
-                        {{$ 'button' content='Download Mizer'}}
-                        <p>Please be sure to have the following prerequisites installed:</p>
-                        <ul>
-                            <li><a href="http://nodejs.org/" target="_blank">Node.js</a></li>
-                            <li><a href="http://sass-lang.com/" target="_blank">SASS</a></li>
-                        </ul>
-                        <p>Once Mizer has been downloaded and the prerequisites have been installed, we can get started with Mizer.</p>
-                        <h3 class="h3">Install the dependencies</h3>
-                        <code>npm install</code>
-                        <p>Or</p>
-                        <code>sudo npm install</code>
+                    <div class="grid-12 module">
+                        <h2>SubModules are the core elements of any website (i.e Buttons, Links, Headings, etc). You can think of SubModules as atoms in <a href='http://bradfrostweb.com/blog/post/atomic-web-design/' target='_blank' title="Atomic Design | Brad Frost">Atomic Design</a>.
+                            A SubModule can be used throughout the site for a variety of instances. By default, Mizer comes with a few SubModules already in place. Let's take
+                            a look at how they would be created from scratch.</h2>
+
+
+                        <!-- Creating a submodule -->
+                        <h3 class="h2" id="#creating-module">Creating a SubModule</h3>
+                        <hr />
+                        <p class="text-large">Creating a SubModule is simple. First, be certain that the SubModule you would like to create, would be used similiarly throughout
+                        your site. Let's start simple with a button. A button will typically follow the same design throughout a site, granted a few minor changes. With Mizer we 
+                        can set a default style, and easily call in the differences between buttons.</p>
+                        <div class="row">
+                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+		                        <p class="text-center">First, we create the Handlebars View, src/views/submodules/button.hbs:</p>
+                        	</div>
+                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+                        		<p class="text-center">Next, we create the JSON model, src/models/submodules/button.json</p>
+                        	</div>
+                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+                        		<p class="text-center">Lastly, we create the SASS styles, src/assets/css/scss/submodules/_button.scss:</p>
+                        	</div>
+                        </div> 
+                        <div class="row equal-heights">
+	                        <code class="xs-grid-12 sm-grid-4">
+	                        	<span class="t">&lt;button <span class="a">class=<span class="s">"button &#123;&#123;'type'&#125;&#125;"</span></span>&gt;</span><br />
+	                        		<span class="col1">&#123;&#123;'content'&#125;&#125;<span><br />
+                        		<span class="t">&lt;/button&gt;</span>
+	                        </code>
+	                        <code class="xs-grid-12 sm-grid-4">
+	                        	{<br />
+									<span class="col1 s">"name"</span> : <span class="s">"button"</span><br />
+									<span class="col1 s">"type"</span> : <span class="s">"primary"</span><br />
+									<span class="col1 s">"content"</span> : <span class="s">"Default Button"</span><br />
+								}
+	                        </code>
+	                        <code class="xs-grid-12 sm-grid-4">
+		                        <span class="t">.button{</span><br />
+			                        <span class="t col1">&amp;.primary{</span><br />
+		                        		<span class="a col2">background:</span><span class="s">#333333</span><span class="a">;</span><br />
+			                        <span class="t col1">}</span><br />
+		                        <span class="t">}</span><br/>
+		                        
+	                        </code>
+                        </div> 
+                        <p class='text-large'>
+                        	If we look at the three separate files above, we can conclude that the handlebars file is pulling data from the JSON file, and being styled
+                        	by the SASS file. Configurations and styles can be added to create increasingly complex submodules.
+                        </p>
+                        <!-- / Creating a submodule -->
+
+                        <!-- Calling a submodule -->
+                        <h3 class="h2" id="#creating-module">Calling a SubModule</h3>
+                        <hr />
+                        <p class="text-large">Now that we've created a basic SubModule, we can place it anywhere on one of our pages with a simple SubModule call:</p>
+                        
+                		<code>&#123;&#123;$ 'button'&#125;&#125;</code>
+                		<p class="text-large">Which outputs everything we've created within our files:</p>
+                		{{$ 'test-button'}}
+                		<p class="text-large">Let's kick it up a notch. With a similar example, we've added a couple different configurations commonly 
+                		used with a button. We can pass these configurations by making a slightly different call:</p>
+                		<code>
+                		&#123;&#123;$ 'button' type='secondary' size='x-large' content='Custom Btn' &#125;&#125;
+                		</code>
+                		<p class="text-large">Which will output our desired configurations:</p>
+                		{{$ 'button' type="secondary" size="x-large" content='Custom Btn'}}
+                        <!-- /calling a Module -->
+
+                        <!-- styling a module -->
+                        <h3 class="h3">Styling a Module</h3>
+                        <hr />
+                        <p class="text-large">
+                        	For every module, there should also be a seperate Sass file. Whether the file should output it's own individual set of css or comile
+                        	into the main.css, is up to you. Each module has it's own Sass file in order to keep the whole project maintainable. Every module should
+                        	have a unique class where styles are built off. For example, the 'content' module, has a class of '.content', where all 'content'
+                        	styles are built upon, an example below:
+                        </p>
+                        <p>src/assets/css/scss/modules/_content.scss:</p>
+                        <code>
+	                        <span class="t">.content{</span><br />
+	                        	<span class="t col1">.content-wrapper{</span><br />
+	                        		<span class="a col2">width:</span><span class="s">100%</span><span class="a">;</span><br />
+	                        	<span class="t col1">}<span><br />
+	                        	<span class="t col1">.image-wrapper{</span><br />
+	                        		<span class="a col2">width:</span><span class="s">25%</span><span class="a">;</span><br />
+	                        	<span class="t col1">}</span><br />
+	                        	<span class="t col1">.image-wrapper + .content-wrapper{</span><br />
+	                        		<span class="a col2">width:</span><span class="s">75%</span><span class="a">;</span><br />
+	                        	<span class="t col1">}<span><br />
+	                        <span class="t">}</span>
+                        </code>
+                        <p><a href="/pages/css/modules" class="link">More on Module Styling <i class="fa fa-angle-right"></i></a></p>
+                        <!-- /styling a module -->
+                        
                     </div>
                 </div>
-                <div class="row equal-heights">
-                    <div class="sm-grid-6 module">
-                        <h3 class="h3">SubModules</h3>
-                        <p>SubModules are small collections of code used throughout the site.
-                            If you are familiar with an <a href="http://bradfrostweb.com/blog/post/atomic-web-design/" target="_blank">Atomic Design</a>,
-                            you can think of SubModules as atoms. SubModules are the basic building block of any site, including buttons, paragraphs, links, headings, etc.</p>
-
-                        <p>In Mizer, calling a SubModule can be as simple as the following:</p>
-                        <code> &#123;&#123;$ 'button'&#125;&#125;</code>
-                        <p>Which renders:</p>
-                        {{$ 'button'}}
-
-                        <p>SubModules can also have options, consider the following:</p>
-                        <code> &#123;&#123;$ 'button' content='This is a button' &#125;&#125;</code>
-                        <p>Which renders:</p>
-                        {{$ 'button' content='This is a button'}}
-
-                        <p>Multiple options can be made available and used in conjunction:</p>
-                        <code> &#123;&#123;$ 'button' size='large' type='secondary' content='CTA Btn' &#125;&#125;</code>
-                        {{$ 'button' size='large' type='secondary' content='CTA Btn'}}
-
-                        <p>To learn more about creating and using SubModules, <a href="#">Click Here</a>.</p>
-                    </div>
-                    <div class="sm-grid-6 module">
-                        <h3 class="h3">Modules</h3>
-                        <p>Modules are made up of several SubModules. You can think of Modules as a molecule in Atomic Design.
-                            Modules can be used to quickly prototype a website or build reusable code.
-
-                        <p>Mizer Modules are called with the following:</p>
-                        <code>&#123;&#123;mzr 'content'&#125;&#125;</code>
-                        <p>Which gives us a predefined set of our SubModules:</p>
-                        {{mzr 'content'}}
-
-                        <p>Much like SubModules, Modules can be configured to your liking:</p>
-                        <code>&#123;&#123;mzr 'content' align='right' image='true'&#125;&#125;</code>
-                        <p>Will return:</p>
-                        {{mzr 'content' align='right' image='true'}}
-                    </div>
-
-                </div>
-
-				<div class="row equal-heights">
-					<div class="sm-grid-12 md-grid-6 module">
-						{{$ 'heading' size="h3" content="Button Sub-module"}}
-						{{$ 'paragraph' content="Button Description"}}
-
-                        <div class="row">
-                            <div class="sm-grid-12">
-                                <code> &#123;&#123;$ 'button' type='secondary' &#125;&#125;</code>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="sm-grid-12 margin-bottom">
-                                {{$ 'button' content="Button Primary"}}
-                                {{$ 'button' type="secondary" content="Button Secondary"}}
-                                {{$ 'button' type="tertiary" content="Button Tertiary"}}
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="sm-grid-12">
-                                <code> &#123;&#123;$ 'button' size="xx-small" &#125;&#125;</code>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="sm-grid-12">
-                                {{$ 'button' content="Button XX-Small" size="xx-small"}}
-                                {{$ 'button' content="Button X-Small" size="x-small"}}
-                                {{$ 'button' content="Button Small" size="small"}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="sm-grid-12">
-                                {{$ 'button' content="Button Regular"}}
-                                {{$ 'button' content="Button Large" size="large"}}
-                                {{$ 'button' content="Button X-Large" size="x-large"}}
-                            </div>
-                        </div>
-					</div>
-					<div class="sm-grid-12 md-grid-6 module">
-						{{$ 'heading' size="h3"}}
-            {{$ 'paragraph'}}
-            {{$ 'link'}}
-					</div>
-				</div>
 
 			</div>
 		</div>

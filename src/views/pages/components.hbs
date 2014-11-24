@@ -31,26 +31,16 @@
 			<div class="container clearfix">
 				<div class="row">
 					<div class="sm-grid-12 no-margin-bottom">
-						<h1 class="h1">Mizer</h1>
-						<h2 class="h2">Code cheap. Code stingily. Code like a Mizer.</h3>
+						<h1 class="h1">Mizer Components</h1>
 					</div>
 				</div>
                 <div class="row">
-                    <div class="sm-grid-12">
+                    <div class='sm-grid-12'>
                         <h2>Mizer is a Front-end web development toolkit used to help create modular code snippets quickly. Use Mizer to build 
                             modules and submodules used throughout a site with ease.</h2>
-                        <hr />
+                        <h3 class="h3 text-center">Code cheap. Code stingily. Code like a Mizer.</h3>
+
                     </div>
-                </div>
-                <div class="row">
-                	<div class="sm-grid-12 md-grid-6 module">
-                		<h2 class="h2">SubModules</h2>
-                		<p>Lorem</p>
-                	</div>
-                	<div class="sm-grid-12 md-grid-6 module">
-                		<h2 class="h2">Modules</h2>
-                		<p>Lorem</p>
-                	</div>
                 </div>
                 <div class="row">
                     <div class="sm-grid-12 module">
@@ -76,6 +66,47 @@
                         </div>     
                     </div>
                 </div>
+                <div class="row equal-heights">
+                    <div class="sm-grid-6 module">
+                        <h3 class="h3"><a href='/pages/submodules'>SubModules</a></h3>
+                        <p>SubModules are small collections of code used throughout the site.
+                            If you are familiar with an <a href="http://bradfrostweb.com/blog/post/atomic-web-design/" target="_blank">Atomic Design</a>,
+                            you can think of SubModules as atoms. SubModules are the basic building block of any site, including buttons, paragraphs, links, headings, etc.</p>
+
+                        <p>In Mizer, calling a SubModule can be as simple as the following:</p>
+                        <code> &#123;&#123;$ 'button'&#125;&#125;</code>
+                        <p>Which renders:</p>
+                        {{$ 'button'}}
+
+                        <p>SubModules can also have options, consider the following:</p>
+                        <code> &#123;&#123;$ 'button' content='This is a button' &#125;&#125;</code>
+                        <p>Which renders:</p>
+                        {{$ 'button' content='This is a button'}}
+
+                        <p>Multiple options can be made available and used in conjunction:</p>
+                        <code> &#123;&#123;$ 'button' size='large' type='secondary' content='CTA Btn' &#125;&#125;</code>
+                        {{$ 'button' size='large' type='secondary' content='CTA Btn'}}
+
+                        <p>To learn more about creating and using SubModules, <a href="/pages/submodules">Click Here</a>.</p>
+                    </div>
+                    <div class="sm-grid-6 module">
+                        <h3 class="h3"><a href='/pages/modules'>Modules</a></h3>
+                        <p>Modules are made up of several SubModules. You can think of Modules as a molecule in Atomic Design.
+                            Modules can be used to quickly prototype a website or build reusable code.
+
+                        <p>Mizer Modules are called with the following:</p>
+                        <code>&#123;&#123;mzr 'content'&#125;&#125;</code>
+                        <p>Which gives us a predefined set of our SubModules, such as the below:</p>
+                        {{mzr 'content'}}
+
+                        <p>Much like SubModules, Modules can be configured to your liking:</p>
+                        <code>&#123;&#123;mzr 'content' align='right' image='true'&#125;&#125;</code>
+                        <p>Will return:</p>
+                        {{mzr 'content' align='right' image='true'}}
+						<p>To learn more about creating and using Modules, <a href="/pages/modules">Click Here</a>.</p>
+                    </div>
+
+                </div>
 
 				<div class="row equal-heights">
 					<div class="sm-grid-12 md-grid-6 module">
@@ -94,8 +125,6 @@
                                 {{$ 'button' type="tertiary" content="Button Tertiary"}}
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="sm-grid-12">
                                 <code> &#123;&#123;$ 'button' size="xx-small" &#125;&#125;</code>
@@ -108,7 +137,6 @@
                                 {{$ 'button' content="Button Small" size="small"}}
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="sm-grid-12">
                                 {{$ 'button' content="Button Regular"}}
@@ -119,8 +147,8 @@
 					</div>
 					<div class="sm-grid-12 md-grid-6 module">
 						{{$ 'heading' size="h3"}}
-            {{$ 'paragraph'}}
-            {{$ 'link'}}
+            			{{$ 'paragraph'}}
+            			{{$ 'link'}}
 					</div>
 				</div>
 
