@@ -4,15 +4,15 @@
  */
  
 // Load plugins
-var gulp            = require('gulp'),
-    gutil           = require('gulp-util'),
-    plumber         = require('gulp-plumber'),
-    sass            = require('gulp-ruby-sass'),
-    autoprefixer    = require('gulp-autoprefixer'),
-    minifycss       = require('gulp-minify-css'),
-    jshint          = require('gulp-jshint'),
-    uglify          = require('gulp-uglify'),
-    imagemin        = require('gulp-imagemin'),
+var gulp            = require('gulp'), //default gulp
+    gutil           = require('gulp-util'), // gulp utilities
+    plumber         = require('gulp-plumber'), // plumber - used to step over errors
+    sass            = require('gulp-ruby-sass'), // sass
+    autoprefixer    = require('gulp-autoprefixer'), //autoprefixer - used to itegrate autoprefixer into sass workflow
+    minifycss       = require('gulp-minify-css'), //minify-css - minifies css files for dist
+    jshint          = require('gulp-jshint'), //jshint - REMOVE
+    uglify          = require('gulp-uglify'), //uglify - ??
+    imagemin        = require('gulp-imagemin'), //imagemin - used to optimize images within images workflow
     rename          = require('gulp-rename'),
     clean           = require('gulp-rimraf'),
     concat          = require('gulp-concat'),
@@ -21,16 +21,15 @@ var gulp            = require('gulp'),
     nodemon         = require('gulp-nodemon'),
     handlebars      = require('gulp-handlebars'),
     svgSprite       = require('gulp-svg-sprites'),
-    open            = require('open'),
-    ftp             = require('gulp-ftp');
+    open            = require('open');
 
 var paths = {
-    scripts: ['src/assets/scripts/**/*.js'],
-    images: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
-    svg:['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg'],
-    css:['src/assets/css/scss/**/*.scss'],
+    scripts: ['src/assets/scripts/**/*.js'], // location of script files
+    images: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'], //location of images and svg's, excluding generated svg file, "symbols.svg"
+    svg:['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg'], //location of svg's, excluding generated svg file, "symbols.svg"
+    css:['src/assets/css/scss/**/*.scss'], // location of sass files
     html:[''],
-    dist:['dist/**/*']
+    dist:['dist/**/*'] // distribution directory
 }
 
 
@@ -70,24 +69,6 @@ gulp.task('images', function() {
 gulp.task('clean', function() {
   return gulp.src(['dist/assets/css', 'dist/assets/scripts', 'dist/assets/images'], {read: false})
     .pipe(clean());
-});
-
-gulp.task('push-qa', function() {
-  return gulp.src(paths.dist)
-    .pipe(ftp({
-        host: '',
-        user: '',
-        pass: ''
-    }));
-});
-
-gulp.task('push-stage', function() {
-  return gulp.src(paths.dist)
-    .pipe(ftp({
-        host: '',
-        user: '',
-        pass: ''
-    }));
 });
  
 // Default task
