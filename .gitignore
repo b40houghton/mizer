@@ -22,6 +22,9 @@ dist/
 # Compiled CSS Files
 src/assets/css/main.css
 
+# Old Gulpfiles
+gulpfile-v1.js
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
