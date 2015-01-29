@@ -1,29 +1,16 @@
 //partial imports
-@import 'partials/variables';
-@import 'partials/fonts';
-@import 'partials/mixins';
-@import 'partials/normalize';
-@import 'partials/helpers';
-@import 'partials/grid';
+@import 'partials/partials';
 
 //submodule imports
-@import 'submodules/buttons';
-@import 'submodules/caption';
-@import 'submodules/icons';
-@import 'submodules/image';
-@import 'submodules/link';
-@import 'submodules/list';
-@import 'submodules/test-button';
-
-
+@import 'submodules/submodules';
 
 //module imports
-@import 'modules/nav';
-@import 'modules/content';
+@import 'modules/modules';
 
 // uncatagorical styles
 body{
 	text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+	background:red;
 }
 p{
 	line-height:1.5em;

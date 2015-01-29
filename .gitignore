@@ -19,6 +19,9 @@ coverage
 # Distribution Folder
 dist/
 
+# Compiled CSS Files
+src/assets/css/main.css
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
