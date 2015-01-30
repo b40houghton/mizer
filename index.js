@@ -300,7 +300,6 @@ hbs.registerHelper('equals', function(param1, param2, options){
 app.use(express.static(__dirname + '/src'));
 
 app.listen(process.env.PORT || 3000, function(){
-    console.log('Server Served @:3000');
 });
 
 
