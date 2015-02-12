@@ -1,0 +1,195 @@
+.d-chi-wrapper {
+
+.module {
+    fieldset {
+        padding: 0;
+        margin: 0 0 2em;
+        border: 0;
+        color: #444444;
+        p {
+            margin: 0.25em 0 1.25em;
+        }
+        .button {
+            margin-right: 0.5em;
+            padding: 0 2.5em;
+        }
+    }
+    label {
+        display: block;
+        line-height: 1.5em;
+        font-size: 1.125em;
+    }
+    .label-content {
+        font-weight: 300;
+    }
+    .radio,
+    .checkbox {
+        display: inline-block;
+        margin-right: 0.25em;
+        width: 1em;
+        height: 1em;
+        background: $inputBackground;
+        box-shadow: inset #c8c69c 1px 1px 3px;
+        transition: all 300ms;
+    }
+    .radio {
+        border-radius: 50%;
+    }
+    .checkbox {
+        border-radius: 0.25em;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        display: none;
+    }
+    input[type="radio"]:checked + .radio,
+    input[type="checkbox"]:checked + .checkbox {
+        background: $lightBlue;
+        box-shadow: none;
+    }
+    input[type="radio"]:checked ~ .label-content,
+    input[type="checkbox"]:checked ~ .label-content {
+        font-weight: 400;
+    }
+    input[type="text"],
+    input[type="textbox"],
+    select,
+    textarea{
+        font-weight: 300;
+        width: 100%;
+        color: #444444;
+        font-size: 1.125em;
+        border: 0;
+        line-height: 1.77em;
+        line-height: 2rem;
+        height:2em;
+        height: 2rem;
+        border-radius: 12px;
+        padding: 0 1em;
+        box-shadow: inset #c8c69c 1px 1px 3px;
+        background-color: $inputBackground;
+        transition: all 300ms;
+        &:focus {
+            outline: none;
+            background-color: $inputActiveBackground;
+        }
+        @include bp-med-min {
+            width: 100%;
+            max-width: 30em;
+            margin-bottom: 1em;
+        }
+
+        @include bp-large-min{
+            max-width: 30em;
+            width:66%;
+        }
+
+        @include bp-xxl-min {
+            max-width: 30em;
+            width:72%;
+        }
+    }
+
+    select{
+        @include bp-med-min {
+            width: 100%;
+        }
+    	-moz-appearance: none;
+    	-webkit-appearance: none;
+        outline: none;
+    	appearance:none;
+    	text-indent: 0.01px;
+    	text-overflow: "";
+    	padding-right: 2em;
+    	box-shadow: inset #c8c69c -1px -1px 3px;
+    }
+
+    .select{
+
+
+        position: relative;
+        display: inline-block;
+        *display:inline;
+        zoom:1;
+        border:none;
+        outline: none;
+
+
+        select{
+            border:0;
+            outline: none;
+        }
+
+        &:before{
+            border:0;
+            outline: none;
+            content:"";
+            display: block;
+            position: absolute;
+            top:0;
+            right:0;
+            height: 2em;
+            width: 2em;
+            border-radius:0 12px 12px 0;
+            box-shadow: -1px -1px 3px #C8C69C inset;
+            background-color: $inputBackground;
+            background-image: url("../images/dropdown-arrow.png");
+            background-repeat: no-repeat;
+            background-position: 55% 55%;
+            pointer-events: none;
+        }
+
+        
+
+    }
+
+    // select::-ms-expand {
+    //     display: none;
+    // }
+
+    textarea{
+        resize: none;
+        height:10em;
+        line-height: 1em;
+        padding:1em;
+    }
+
+    .error-msg {
+        display: none;
+        color: $errorRed;
+        font-weight: 300;
+        padding: 0.5em 0;
+    }
+
+    select.invalid,
+    textarea.invalid,
+    input.invalid {
+        border: 2px solid $errorRed;
+        & ~ .error-msg {
+            display: block;
+        }
+    }
+}
+
+}
+
+//IE10
+html[data-useragent*='MSIE 10.0'] {
+    
+    .module select,
+    .module-search-results .pagination #page-select{
+        padding-right:0;
+    }
+
+
+    .module .select::before,
+    .module .select::after{
+        display: none;
+    }
+}
+
+html[data-useragent*='rv:11.0'] {
+    select::-ms-expand {
+        display: none;
+    }
+}

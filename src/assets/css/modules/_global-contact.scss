@@ -1,0 +1,101 @@
+@keyframes cssInitShow {
+    0%{
+        left:0;
+    }
+
+    25%{
+        left:0
+    }
+
+    75%{
+        left:0
+    }
+
+    100% {
+        left:-60px;
+    }
+}
+
+.d-chi-wrapper {
+
+// if sitecore in edit mode hide
+.scEditMode .global-contact{
+	display:none;
+}
+
+.global-contact{
+    top:11.25em;
+    left:0;
+    position: fixed;
+    z-index: 2;
+    transition: left 300ms;
+    @include custom-bp-max(1025px){
+        display: none;
+    }
+    @include custom-bp-max(1440px){
+        left:-60px;
+        animation: cssInitShow 900ms;
+
+        &:hover{
+            left:0;
+        }
+
+        
+    }
+
+    ul{
+        padding:0;
+        margin:0;
+
+        li{
+            > a{
+                text-transform: uppercase;
+                font-size:0.875em;
+                display: block;
+                text-align: center;
+                background:$darkPurple;
+                color:$white;
+                width: 5em;
+                height: 5em;
+                border-top:2px solid #654370;
+                border-top: 2px solid rgba(255,255,255,0.5);
+                text-decoration: none;
+                opacity: 0.90;
+                transition: opacity 0.25s ease;
+
+                &:hover{
+                    opacity: 1;
+                }
+
+                > span{
+                    padding-top:0.7em;
+                    display: block;
+                }
+
+                .icon{ 
+                    max-height: 2em;
+                    opacity: 0.4;
+                    fill:$white;
+                }
+                &:hover .icon{
+                    opacity: 1;
+                }
+            }   
+        }
+
+        li:first-child{
+            > a{
+                border-top:0;
+            }
+        }
+
+        .last{
+            svg{
+                width:1.75em;
+                height: 1.75em;
+            }
+        }
+    }
+}
+
+}

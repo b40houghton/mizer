@@ -1,0 +1,205 @@
+
+
+.d-chi-wrapper {
+    .ie8{ 
+
+    #body{
+		padding-top:9em;
+    	min-height:60em;
+	}
+
+    button,
+    input,
+    select,
+    textarea {
+        *vertical-align: middle;
+    }
+
+    .link-list{
+        li h4 a{
+            padding-right:1em;
+            background: url(../../images/polyfill/arrow-copy.png) no-repeat right 60%;
+
+            &:after{
+                display: none;
+            }
+        }
+    }
+
+    .overlay-container{
+        background: url(../../images/polyfill/overlay-bg.png);
+
+        .btn-close{
+            margin-top: 0;
+            background: url(../../images/polyfill/overlay-close-btn.gif);
+            &:after,
+            &:before{
+            	display: none;
+            }
+        }
+    }
+
+    .mobile-nav.open{
+    	img{
+    		display: none;
+    	}
+    }
+    #mobile-header .mobile-nav.open .close{
+    	background:url(../../images/polyfill/close-btn.png) no-repeat 50% 50%;
+    	&:before,
+    	&:after{
+    		display: none;
+    	}
+    }
+
+	header{
+        border-bottom:1px solid #eee;
+	}
+
+    .link{
+		&:before,
+		&:after{
+			display: none;
+		}
+    	padding-right:1em;
+    	background: url(../../images/polyfill/arrow-copy.png) no-repeat right 50%;
+    
+         &.no-arrow{
+            background:none;
+        }
+
+        &.previous{
+            padding-right:0;
+            padding-left:1em;
+            background:url(../../images/polyfill/arrow-left.png) no-repeat left 50%;
+        }
+    }
+
+    header #main-nav #global-nav a{
+    	&:focus{
+    		outline: none;
+    	}
+
+        &:hover,
+        &.active{
+            
+            &:after,
+            &:before{
+            	width:1em;
+            	margin-left:-0.5em;
+        		height: 0.25em;
+            	border-left:0;
+            	border-bottom:0;
+                background: url(../../images/polyfill/arrow.jpg) no-repeat center bottom;
+
+            }
+        }
+    }
+
+    .btn-close{
+    	margin-top: 1em;
+    	background:url(../../images/polyfill/close-btn.png) no-repeat center bottom;
+    	opacity: 1;
+    	&:after,
+    	&:before{
+    		border:none;
+    	}
+    }
+
+    .btn-back{
+    	padding-left:1em;
+    	background:url(../../images/polyfill/arrow-left.png) no-repeat center left;
+    	&:before{
+    		display: none;
+    	}
+    }
+
+    .nav-search {
+    	input{
+    		padding-left:0.5em
+    	}
+    	img{
+    		display: none;
+    	}
+    }
+
+    .breadcrumb{
+    	a{
+    		background: url(../../images/polyfill/arrow-blk.png) no-repeat right 75%;
+    		&:after{
+    			display: none;
+    		}
+    	}
+    }
+
+    select{
+        background-image:none;
+        padding-right: 0;
+    }
+
+    .sign-in{
+    	img{
+    		width:1em;
+    		height: 1em;
+    	}
+    }    
+
+    .play + img{
+        position: absolute;
+        width: 2.5em;
+        height: 2.5em;
+        bottom:9%;
+        left:5%;
+    }
+
+    .sitemap-module ul a{width:auto; }
+
+    .module-slider{
+        .slides-nav{
+            visibility: hidden;
+            .prev,
+            .next{
+                &:after,
+                &:before{
+                    display: none;
+                }
+            }
+            .prev{
+                background:url(../../images/polyfill/slider-arrow-left.png) no-repeat 50% 50%;
+            }
+            .next{
+                background:url(../../images/polyfill/slider-arrow-right.png) no-repeat 50% 50%;
+
+            }
+        }
+
+        &:hover{
+            .slides-nav{
+                visibility:visible;
+            }
+        }
+    }
+
+    .grid-8,
+    .sm-grid-8,
+    .md-grid-8,
+    .lg-grid-8{
+    	.module-slider .slide-content{
+        	// background: url("/assets/images/Hero-845.png") no-repeat;
+        }
+    }
+
+    .grid-6,
+    .sm-grid-6,
+    .md-grid-6,
+    .lg-grid-6 { 
+        .module-slider .slide-content{
+        	// background: url("/assets/images/Hero-628.png") no-repeat;
+        }
+    }
+
+    }
+
+
+
+}

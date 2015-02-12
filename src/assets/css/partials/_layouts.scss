@@ -1,0 +1,30 @@
+@import "grid";
+
+
+html{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit; 
+}
+
+.d-chi-wrapper {
+
+.container{
+    width:95%;
+    margin:0 auto;
+    position: relative;
+    
+    @include custom-bp-min($bp-xxl + 4em){
+        width:$bp-xxl;
+    }
+}
+
+}

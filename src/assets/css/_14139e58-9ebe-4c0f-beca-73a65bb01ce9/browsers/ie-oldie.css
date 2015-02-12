@@ -1,0 +1,174 @@
+/*Mixins */
+/* line 6, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 #body {
+  padding-top: 9em;
+  min-height: 60em;
+}
+/* line 11, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 button,
+.d-chi-wrapper .ie8 input,
+.d-chi-wrapper .ie8 select,
+.d-chi-wrapper .ie8 textarea {
+  *vertical-align: middle;
+}
+/* line 19, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link-list li h4 a {
+  padding-right: 1em;
+  background: url(../../images/polyfill/arrow-copy.png) no-repeat right 60%;
+}
+/* line 23, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link-list li h4 a:after {
+  display: none;
+}
+/* line 29, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .overlay-container {
+  background: url(../../images/polyfill/overlay-bg.png);
+}
+/* line 32, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .overlay-container .btn-close {
+  margin-top: 0;
+  background: url(../../images/polyfill/overlay-close-btn.gif);
+}
+/* line 35, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .overlay-container .btn-close:after, .d-chi-wrapper .ie8 .overlay-container .btn-close:before {
+  display: none;
+}
+/* line 43, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .mobile-nav.open img {
+  display: none;
+}
+/* line 47, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 #mobile-header .mobile-nav.open .close {
+  background: url(../../images/polyfill/close-btn.png) no-repeat 50% 50%;
+}
+/* line 49, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 #mobile-header .mobile-nav.open .close:before, .d-chi-wrapper .ie8 #mobile-header .mobile-nav.open .close:after {
+  display: none;
+}
+/* line 55, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 header {
+  border-bottom: 1px solid #eee;
+}
+/* line 59, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link {
+  padding-right: 1em;
+  background: url(../../images/polyfill/arrow-copy.png) no-repeat right 50%;
+}
+/* line 60, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link:before, .d-chi-wrapper .ie8 .link:after {
+  display: none;
+}
+/* line 67, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link.no-arrow {
+  background: none;
+}
+/* line 71, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .link.previous {
+  padding-right: 0;
+  padding-left: 1em;
+  background: url(../../images/polyfill/arrow-left.png) no-repeat left 50%;
+}
+/* line 79, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 header #main-nav #global-nav a:focus {
+  outline: none;
+}
+/* line 86, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 header #main-nav #global-nav a:hover:after, .d-chi-wrapper .ie8 header #main-nav #global-nav a:hover:before, .d-chi-wrapper .ie8 header #main-nav #global-nav a.active:after, .d-chi-wrapper .ie8 header #main-nav #global-nav a.active:before {
+  width: 1em;
+  margin-left: -0.5em;
+  height: 0.25em;
+  border-left: 0;
+  border-bottom: 0;
+  background: url(../../images/polyfill/arrow.jpg) no-repeat center bottom;
+}
+/* line 99, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .btn-close {
+  margin-top: 1em;
+  background: url(../../images/polyfill/close-btn.png) no-repeat center bottom;
+  opacity: 1;
+}
+/* line 103, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .btn-close:after, .d-chi-wrapper .ie8 .btn-close:before {
+  border: none;
+}
+/* line 109, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .btn-back {
+  padding-left: 1em;
+  background: url(../../images/polyfill/arrow-left.png) no-repeat center left;
+}
+/* line 112, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .btn-back:before {
+  display: none;
+}
+/* line 118, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .nav-search input {
+  padding-left: 0.5em;
+}
+/* line 121, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .nav-search img {
+  display: none;
+}
+/* line 127, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .breadcrumb a {
+  background: url(../../images/polyfill/arrow-blk.png) no-repeat right 75%;
+}
+/* line 129, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .breadcrumb a:after {
+  display: none;
+}
+/* line 135, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 select {
+  background-image: none;
+  padding-right: 0;
+}
+/* line 141, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .sign-in img {
+  width: 1em;
+  height: 1em;
+}
+/* line 147, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .play + img {
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  bottom: 9%;
+  left: 5%;
+}
+/* line 155, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .sitemap-module ul a {
+  width: auto;
+}
+/* line 158, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .module-slider .slides-nav {
+  visibility: hidden;
+}
+/* line 162, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .module-slider .slides-nav .prev:after, .d-chi-wrapper .ie8 .module-slider .slides-nav .prev:before,
+.d-chi-wrapper .ie8 .module-slider .slides-nav .next:after,
+.d-chi-wrapper .ie8 .module-slider .slides-nav .next:before {
+  display: none;
+}
+/* line 167, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .module-slider .slides-nav .prev {
+  background: url(../../images/polyfill/slider-arrow-left.png) no-repeat 50% 50%;
+}
+/* line 170, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .module-slider .slides-nav .next {
+  background: url(../../images/polyfill/slider-arrow-right.png) no-repeat 50% 50%;
+}
+/* line 177, ../../browsers/_ie8.scss */
+.d-chi-wrapper .ie8 .module-slider:hover .slides-nav {
+  visibility: visible;
+}
+
+/* line 5, ../../browsers/_ie9.scss */
+.d-chi-wrapper .ie9 .module select {
+  background-image: none;
+  padding-right: 0;
+}
+
+/* line 12, ../../browsers/ie-oldie.scss */
+.d-chi-wrapper .ie9 .select:before,
+.d-chi-wrapper .ie8 .select:before {
+  display: none;
+}

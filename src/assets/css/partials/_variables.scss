@@ -1,0 +1,38 @@
+$darkPurple: #532e60;
+$lightestPurple:#baabbf;
+$lighterPurple:#866c8f;
+$lightPurple: #755880;
+$darkBlue: #0074c6;
+$lightBlue: #0194d3;
+$blue:#008dcf;
+$orange:#EEAF30;
+$white: #ffffff;
+$black: #000000;
+$errorRed:#a10e1d;
+$borderBottomGrey: #b6b7b5;
+$borderBottomLightGrey:#e9e9e9;
+$playHoverGrey:#c7c7c7;
+$dividerGrey:#83698d;
+$dividerPurple:#654370;
+$darkGrey: rgb(68, 68, 68);
+$lightGrey: rgb(105,105,105);
+$buttonGrey: rgb(161,161,161);
+$bodyGradientTop:rgb(237, 236, 221);
+$bodyGradientBottom:rgb(245, 245, 242);
+$sliderIndicatorTan:#e7e6d2;
+$sliderIndicatorActive: $lightBlue;
+$inputBackground:#e1e0c6;
+$inputActiveBackground:#edecdd;
+$onepx: 0.0625em;
+
+//major breakpoints
+$bp-small: 	20em; 	// 320px
+$bp-med: 	48em; 	// 768px 
+$bp-large: 	64em; 	// 1024px
+$bp-xl: 	72em; 	// 1152px
+$bp-xxl:	80em;	// 1280px
+
+$footerHeight:142px;
+
+$mobileNavWidth:85%;
+$tabletNavWidth:45%;
