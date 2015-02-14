@@ -8,6 +8,7 @@ var gulp            = require('gulp'),
 	sequence		= require('run-sequence'),
 	browserSync		= require('browser-sync'),
 	reload			= browserSync.reload,
+	concat          = require('gulp-concat'),
 	plugins 		= loadPlugins({
 		rename: {
 			'gulp-ruby-sass':'sass',
@@ -21,7 +22,11 @@ var paths = {
 	src: {
 		root:['src/'],
 		html:'src/views/pages/*.hbs',
-		scripts:['src/assets/scripts/**/*.js'],
+		scripts: {
+			root: 'src/assets/scripts/',
+			head:'src/assets/scripts/head/**/*.js',
+			body:'src/assets/scripts/body/**/*.js',
+		},
 		image:['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
 		css:'src/assets/css/scss',
 		svg:['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg']
@@ -48,10 +53,29 @@ var browsers = [
 	'bb >= 10' 
 ]; 
 
+gulp.task('scripts', function() {
+  	
+  	gulp.src(paths.src.scripts.head)
+    	.pipe(concat('head.js'))
+    	.pipe(gulp.dest(paths.src.scripts.root))
+    	//.pipe(gulp.dest(paths.dist.scripts))
+
+    	console.log(paths.src.scripts.root + 'head.js written');
+
+  	gulp.src(paths.src.scripts.body)
+    	.pipe(concat('body.js'))
+    	.pipe(gulp.dest(paths.src.scripts.root))
+    	//.pipe(gulp.dest(paths.dist.scripts))
+
+    	console.log(paths.src.scripts.root + 'body.js written');
+});
+
+
+
 gulp.task('styles', function() {
 	return plugins.sass(paths.src.css,  { style: "expanded", lineNumbers:true })
 		.on('error', function(err){console.log(err.message); })
-		.pipe(plugins.autoprefixer(browsers))
+		 .pipe(plugins.autoprefixer(browsers))
 		.pipe(gulp.dest('src/assets/css'))
 		.pipe(gulp.dest(paths.dist.css))
 		.pipe(plugins.rename(function(path){
@@ -75,7 +99,7 @@ gulp.task('browser-sync', ['run-nodemon'], function(){
 	
 });
 
-gulp.task('run-nodemon', function(callback){
+gulp.task('run-nodemon', ['clean', 'styles', 'scripts'], function(callback){
 	var called = false;
 
 	return plugins.nodemon({
@@ -90,7 +114,7 @@ gulp.task('run-nodemon', function(callback){
 
 gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('dev', ['styles','browser-sync'], function(){
+gulp.task('dev', ['styles', 'scripts', 'browser-sync'], function(){
 	gulp.watch(['src/assets/css/scss/**/*.scss'], ['styles']);
 	gulp.watch(['src/assets/js/**/*.js'], reload);
 });

@@ -2,51 +2,30 @@
 			<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 			<!-- required : all sass files should compile to main.css -->
-            <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+      <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 
-            <!-- ** include any additional stylesheets below here ** -->
-            <!--<link rel="stylesheet" type="text/css" href="/assets/css/modules/slider.css" />-->
+      <!-- ** include any additional stylesheets below here ** -->
+      <!--<link rel="stylesheet" type="text/css" href="..." />-->
 
 
-            <!-- Use html5 shiv, respond.js, and ie specific css -->
+      <!-- Use html5 shiv, respond.js, and ie specific css -->
+      <!--[if IE]>
+          <script src="/assets/scripts/vendor/html5shiv.js"></script>
+          <script src="/assets/scripts/vendor/respond.js"></script>
+          <link rel="stylesheet" type="text/css" href="/assets/css/browsers/ie-oldie.css" />
+      <![endif]-->
 
-            <!--[if IE]>
-                <script src="/assets/scripts/vendor/html5shiv.js"></script>
-                <script src="/assets/scripts/vendor/respond.js"></script>
-                <link rel="stylesheet" type="text/css" href="/assets/css/browsers/ie-oldie.css" />
-            <![endif]-->
-
-        <!-- initialize the dc object -->
+    
 		<script>
+        
+        // initialize the dc object  
+        var dc = {};
+
+        // moduleMethodLoader
+        dc.moduleMethodLoad = [];
            
-        	var dc = {};
+    </script>
 
-			// js helper function for calling in module specific logic
-			dc.getModule = function(moduleArr,customData){require(moduleArr, customData);};
-
-            // set breakpoints
-            dc.breakpoints = {
-                "mobile": 767,
-                "tablet":1024,
-                "desktop":1280,
-                "current":"desktop"
-            }
-
-			// virtual url placeholder for Google Analytics
-    		dc.gaVirtualUrl = 'virtual-url-string';
-
-    		// google analytics custom variables
-    		dc.gaCustomVars = {
-    			'dimension1'        : 'string',
-  				'dimension2'        : 'string',
-  				'dimension3'        : 'string',
-  				'dimension4'        : 'string',
-  				'dimension5'        : 'string',
-  				'dimension6'        : 'string',
-  				'dimension7'        : 'string'
-    		};
-           
-       </script>
-
-       <!-- Require.js script -->
-       <script data-main="/assets/scripts/main.js" src="/assets/scripts/vendor/require.js"></script>
+    <!-- Pre DOM ready js -->
+    <script data-main="/assets/scripts/main.js" src="/assets/scripts/head.js"></script>
+    
