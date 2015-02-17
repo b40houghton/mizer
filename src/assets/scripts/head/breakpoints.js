@@ -10,6 +10,8 @@ dc.breakpoints = {
     "current":"large"
 }
 
+dc.moduleMethod = {};
+
 // listen for window resize
 window.addEventListener('resize', function(event){
     
@@ -24,8 +26,7 @@ window.addEventListener('resize', function(event){
         if (window.jQuery) $(window).trigger('breakpointChange', dc.breakpoints.current);
         
         // broadcast event for Angular
-        //if (window.Angular) $rootScope.$broadcast('breakpointChange', dc.breakpoints.current);
-    
+        //if (window.Angular) angular.element(document).scope().$broadcast('breakpointChange', dc.breakpoints.current);
     }
 
     function getCurrentBreakpoint(){

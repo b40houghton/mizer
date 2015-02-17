@@ -34,14 +34,21 @@ hbs.registerPartials(viewPartials);
 // global variable to persist the current page url accross the overall app
 var currentPage;
 
-app.get('/pages/*', function(req, res){
+
+/* render any requested assets */
+app.use(express.static(__dirname + '/src'));
+
+app.get('*', function(req, res){
     
     var requestedBaseUrlStr = req._parsedUrl.pathname;
     
+    //console.log(requestedBaseUrlStr.replace('/pages/', '') + '.hbs');
+
     currentPage = requestedBaseUrlStr;
-        
+    
+
     if (requestedBaseUrlStr == '/') res.render('index');
-    else res.render(requestedBaseUrlStr.replace('/pages/', '') + '.hbs');
+    else res.render(requestedBaseUrlStr.substr(1) + '.hbs');
     
 });
 
@@ -296,11 +303,9 @@ hbs.registerHelper('equals', function(param1, param2, options){
 	}
 });
 
-/* render any requested assets */
-app.use(express.static(__dirname + '/src'));
 
-app.listen(process.env.PORT || 3000, function(){
-});
+
+app.listen(process.env.PORT || 3000, function(){});
 
 
 

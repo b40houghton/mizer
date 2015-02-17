@@ -1,21 +1,11 @@
 
-    var allowScroll = true;
+    
 
     //add useragent to data-useragent
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
-    //scroll throttle function
-    function scollThrottle() {
-        if (allowScroll === false) return;
-        else {
-            allowScroll = false;
-            setTimeout(function() {
-                $('body').trigger('throttledScroll', $(window).scrollTop());
-                allowScroll = true;
-            }, 30);
-        }
-    };
+    
 
     //svg reload function
     function svgReload() {
@@ -130,10 +120,6 @@
         $(window).trigger("reloadSVG");
     });
 
-    //pass off scroll to scroll throttle
-    $(window).off('scroll').on('scroll', function(e) {
-        if (allowScroll) scollThrottle();
-    });
     
     // on DOM ready logic
     $(function(){

@@ -9,6 +9,7 @@ var gulp            = require('gulp'),
 	browserSync		= require('browser-sync'),
 	reload			= browserSync.reload,
 	concat          = require('gulp-concat'),
+	sourcemaps 		= require('gulp-sourcemaps'),
 	plugins 		= loadPlugins({
 		rename: {
 			'gulp-ruby-sass':'sass',
@@ -24,8 +25,8 @@ var paths = {
 		html:'src/views/pages/*.hbs',
 		scripts: {
 			root: 'src/assets/scripts/',
-			head:'src/assets/scripts/head/**/*.js',
-			body:'src/assets/scripts/body/**/*.js',
+			head: 'src/assets/scripts/head/**/*.js',
+			body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
 		},
 		image:['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
 		css:'src/assets/css/scss',
@@ -56,14 +57,18 @@ var browsers = [
 gulp.task('scripts', function() {
   	
   	gulp.src(paths.src.scripts.head)
+    	.pipe(sourcemaps.init())
     	.pipe(concat('head.js'))
+    	.pipe(sourcemaps.write())
     	.pipe(gulp.dest(paths.src.scripts.root))
     	//.pipe(gulp.dest(paths.dist.scripts))
 
     	console.log(paths.src.scripts.root + 'head.js written');
 
   	gulp.src(paths.src.scripts.body)
+    	.pipe(sourcemaps.init())
     	.pipe(concat('body.js'))
+    	.pipe(sourcemaps.write())
     	.pipe(gulp.dest(paths.src.scripts.root))
     	//.pipe(gulp.dest(paths.dist.scripts))
 
