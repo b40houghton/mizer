@@ -8,8 +8,6 @@ var gulp            = require('gulp'),
 	sequence		= require('run-sequence'),
 	browserSync		= require('browser-sync'),
 	reload			= browserSync.reload,
-	concat          = require('gulp-concat'),
-	sourcemaps 		= require('gulp-sourcemaps'),
 	plugins 		= loadPlugins({
 		rename: {
 			'gulp-ruby-sass':'sass',
@@ -64,20 +62,18 @@ var browsers = [
 gulp.task('scripts', function() {
   	
   	gulp.src(paths.src.scripts.head)
-    	.pipe(sourcemaps.init())
-    	.pipe(concat('head.js'))
-    	.pipe(sourcemaps.write())
+    	.pipe(plugins.sourcemaps.init())
+    	.pipe(plugins.concat('head.js'))
+    	.pipe(plugins.sourcemaps.write())
     	.pipe(gulp.dest(paths.src.scripts.root))
-    	//.pipe(gulp.dest(paths.dist.scripts))
 
     	console.log(paths.src.scripts.root + 'head.js written');
 
   	gulp.src(paths.src.scripts.body)
-    	.pipe(sourcemaps.init())
-    	.pipe(concat('body.js'))
-    	.pipe(sourcemaps.write())
+    	.pipe(plugins.sourcemaps.init())
+    	.pipe(plugins.concat('body.js'))
+    	.pipe(plugins.sourcemaps.write())
     	.pipe(gulp.dest(paths.src.scripts.root))
-    	//.pipe(gulp.dest(paths.dist.scripts))
 
     	console.log(paths.src.scripts.root + 'body.js written');
 });
@@ -105,7 +101,7 @@ gulp.task('browser-sync', ['run-nodemon'], function(){
 			proxy: "http://localhost:3000",
 			files:["dist/**/*"],
 			port:3001,
-			startPath:"/pages/index"
+			startPath:"/index"
 		});
 	}, 1000);
 	
