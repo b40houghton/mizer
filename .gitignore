@@ -23,6 +23,10 @@ dist/
 src/assets/css/main.css
 src/assets/css/browsers/ie-oldie.css
 
+# Compiled JS Files
+src/assets/scripts/body.js
+src/assets/scripts/head.js
+
 # Old Gulpfiles
 gulpfile-v1.js
 
