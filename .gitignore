@@ -21,6 +21,7 @@ dist/
 
 # Compiled CSS Files
 src/assets/css/main.css
+src/assets/css/browsers/ie-oldie.css
 
 # Old Gulpfiles
 gulpfile-v1.js
