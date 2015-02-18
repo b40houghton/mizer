@@ -98,7 +98,7 @@ gulp.task('styles', function() {
         .pipe(reload({stream:true}));
 });
 
-gulp.task('browser-sync', ['run-nodemon'], function(){
+gulp.task('browser-sync', ['dev'], function(){
 	//wait for the server to start before running
 	setTimeout(function(){
 		browserSync.init(null, {
@@ -111,7 +111,7 @@ gulp.task('browser-sync', ['run-nodemon'], function(){
 	
 });
 
-gulp.task('run-nodemon', ['clean', 'styles', 'scripts'], function(callback){
+gulp.task('dev', ['clean', 'styles', 'scripts'], function(callback){
 	var called = false;
 
 	return plugins.nodemon({
@@ -126,7 +126,7 @@ gulp.task('run-nodemon', ['clean', 'styles', 'scripts'], function(callback){
 
 gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('dev', ['styles', 'scripts', 'browser-sync'], function(){
+gulp.task('sync', ['styles', 'scripts', 'browser-sync'], function(){
 	gulp.watch(['src/assets/css/scss/**/*.scss'], ['styles']);
 	gulp.watch(['src/assets/js/**/*.js'], reload);
 });
