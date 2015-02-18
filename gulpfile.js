@@ -27,6 +27,13 @@ var paths = {
 			root: 'src/assets/scripts/',
 			head: 'src/assets/scripts/head/**/*.js',
 			body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
+		
+
+			//'/src/**/!(foobar)*.js', // all files that end in .js EXCEPT foobar*.js
+  			//'/src/js/foobar.js',
+
+
+
 		},
 		image:['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
 		css:'src/assets/css/scss',

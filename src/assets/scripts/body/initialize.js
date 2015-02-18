@@ -9,14 +9,14 @@ doc.setAttribute('data-useragent', navigator.userAgent);
 
  	for (var i = 0, len = dc.moduleMethodLoad.length; i < len; i++) {
 
- 		(function(dc, options){
+ 		(function(dc){
  			
  			var name 	= dc.moduleMethodLoad[i].name,
  			options	= dc.moduleMethodLoad[i].options || undefined;
 
  			dc.moduleMethod[name](options);
 
- 		})(dc, options);
+ 		})(dc);
 
  	}
  }
