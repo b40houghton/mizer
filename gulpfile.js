@@ -10,7 +10,6 @@ var gulp            = require('gulp'),
 	reload			= browserSync.reload,
 	plugins 		= loadPlugins({
 		rename: {
-			'gulp-ruby-sass':'sass',
 			'gulp-svg-symbols':'symbols'
 		}
 	});
@@ -34,7 +33,7 @@ var paths = {
 
 		},
 		image:['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
-		css:'src/assets/css/scss',
+		css:'src/assets/css/scss/**/*.scss',
 		svg:['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg']
 	},
 	dist: {
@@ -81,16 +80,21 @@ gulp.task('scripts', function() {
 
 
 gulp.task('styles', function() {
-	return plugins.sass(paths.src.css,  { style: "expanded", lineNumbers:true })
-		.on('error', function(err){console.log(err.message); })
-		 .pipe(plugins.autoprefixer(browsers))
-		.pipe(gulp.dest('src/assets/css'))
+	gulp.src(paths.src.css)
+		.pipe(plugins.sourcemaps.init())
+			.pipe(plugins.sass())
+			.pipe(plugins.sourcemaps.write({includeContent: false}))		
+			.pipe(plugins.autoprefixer(browsers))
+			.pipe(gulp.dest('src/assets/css/'))
+			.pipe(gulp.dest(paths.dist.css))
+			.pipe(plugins.sourcemaps.init({loadMaps: true}))
+			.pipe(plugins.rename(function(path){
+	            path.basename += ".min"
+	        }))
+	        .pipe(plugins.minifyCss())
+			.pipe(plugins.sourcemaps.write({includeContent: false}))
+
 		.pipe(gulp.dest(paths.dist.css))
-		.pipe(plugins.rename(function(path){
-            path.basename += ".min"
-        }))
-        .pipe(plugins.minifyCss())
-        .pipe(gulp.dest(paths.dist.css))
         .pipe(reload({stream:true}));
 });
 
