@@ -1,0 +1,35 @@
+<div class="mzr-slider">
+
+	<ul id={{this.id}} class="slides current-1 count-{{this.slides.length}} init-animation">
+
+	{{#each this.slides}}
+		<li data-sliderbgsmall="{{urlMobile}}" data-sliderbglarge="{{urlDesktop}}" style="background:url({{urlDesktop}})">
+			
+			<div class="slide-wrapper">
+				
+				content goes here
+
+			</div>
+
+		</li>
+	{{/each}}
+	</ul>
+	<div>
+
+</div>
+
+.navigation {}
+
+    .indicators {}
+
+    .previous {}
+    
+    .next {}
+<script>
+    dc.moduleMethodLoad.push({
+            name    : 'slider',
+            options : {
+            	id: '{{this.id}}' // the id sets the slides panel element id in the mark and becomes the unique identified for it over against other sliders that might be working ont he page as well
+            }
+    });
+</script>

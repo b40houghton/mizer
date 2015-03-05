@@ -1,0 +1,84 @@
+.mzr-slider {
+
+    // slider specific variables scoped in the .mzr-slider space
+    $smallSliderHeight:200px;
+    $mediumSliderHeight:400px;
+    $largeSliderHeight:600px;
+    $maxTotalSlides:20;
+    $slidingSpeed:.5s;
+    $slidingDelay:5s;
+    $transitionTiming:'cubic-bezier(0.42,0,0.58,1)';
+
+
+
+    // slider heights for the different major breakpoints
+    height:$smallSliderHeight;
+    overflow:hidden;
+
+    @include bp-med-min{
+        height:$mediumSliderHeight;
+    }
+    @include bp-large-min{
+        height:$largeSliderHeight;
+    }
+
+    .slides {
+        @extend .list-none;
+        margin: 0;
+        height: 100%;
+        position: relative;
+        display: flex;
+        // instead of using js to set the slide width, loop through the possible slide count and rely on a class    
+        @for $i from 1 through $maxTotalSlides {
+            
+            $slidWidth: (100 / $i);
+
+            &.count-#{$i} {
+                width:($i * 100) * 1%;
+                > li { 
+                    width:$slidWidth * 1%;
+                }
+
+                $translatePosition:0;
+                
+                @for $j from 1 through $i {
+                    
+                    &.current-#{$j} {
+                        transform: translate(($translatePosition * 1%),0);
+                    }
+                    
+                    $translatePosition:($translatePosition - $slidWidth);
+                }
+            }
+        }
+        &.init-animation {
+            transition:transform #{$slidingSpeed} #{$transitionTiming} #{$slidingDelay};
+        }
+        &.animate-now {
+            transition:transform #{$slidingSpeed} #{$transitionTiming} 0;
+        }
+        &.touching {
+            transition:left #{$slidingSpeed} #{$transitionTiming} 0;
+        }
+        > li {
+            position: relative;
+            display: inline-block;
+            flex: auto;
+            float: left;
+            height:100%;
+        }
+    }
+
+
+    .navigation {}
+
+    .indicators {}
+
+    .previous {}
+    
+    .next {}
+
+
+
+
+}

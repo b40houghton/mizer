@@ -1,9 +1,3 @@
-
-// add useragent to data-useragent
-var doc = document.documentElement;
-doc.setAttribute('data-useragent', navigator.userAgent);
-
-
 // loop through the dc.moduleMethodLoad object to load module-specific logic
  if (dc.moduleMethodLoad.length) {
 

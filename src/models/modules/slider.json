@@ -1,0 +1,29 @@
+{
+    "name": "slider",
+    "id": "home-hero-slider",
+    "classes": "",
+    "hero-title": "Talent. Creativity. Collaboration.",
+    "hero-message": "<p>Omnicom’s global leadership in marketing communications is fostered by the industry’s most innovative, collaborative and diverse talent. <span class=\"md-hide\">Together our people deliver big creative, competitive ideas based on actionable customer insights.</span></p>",
+    "slides": [
+        {
+            "urlDesktop": "http://lorempixel.com/1280/500/?nonce=1",
+            "urlMobile": "http://lorempixel.com/770/300/?nonce=1"
+
+        },
+		{
+            "urlDesktop": "http://lorempixel.com/1280/500/?nonce=2",
+            "urlMobile": "http://lorempixel.com/770/300/?nonce=2"
+
+        },
+        {
+            "urlDesktop": "http://lorempixel.com/1280/500/?nonce=3",
+            "urlMobile": "http://lorempixel.com/770/300/?nonce=3"
+
+        },
+        {
+            "urlDesktop": "http://lorempixel.com/1280/500/?nonce=4",
+            "urlMobile": "http://lorempixel.com/770/300/?nonce=4"
+
+        }
+    ]
+}
