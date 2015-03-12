@@ -27,7 +27,8 @@ var paths = {
             root: 'src/assets/scripts/',
             head: 'src/assets/scripts/head/**/*.js',
             body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
-            build: ['src/assets/scripts/*.js']
+            build: ['src/assets/scripts/*.js'],
+            polyfills: ['src/assets/scripts/polyfills/*.js']
         },
         image: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
         css: 'src/assets/css/scss/**/*.scss',
@@ -75,7 +76,10 @@ gulp.task('scripts', function () {
         .pipe(plugins.concat('body.js'))
         .pipe(plugins.sourcemaps.write());
 
-    return ms(headScripts, bodyScripts).pipe(gulp.dest(paths.src.scripts.root));
+    var polyfillScripts = gulp.src(paths.src.scripts.polyfills)
+        .pipe(plugins.concat('polyfills.js'));
+
+    return ms(headScripts, bodyScripts, polyfillScripts).pipe(gulp.dest(paths.src.scripts.root));
 });
 
 // scripts build task - minify and place in dist

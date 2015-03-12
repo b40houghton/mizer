@@ -1,14 +1,17 @@
-<div class="mzr-slider">
+<div class="mzr-slider loader loader-layer-over">
+
 
 	<ul id={{this.id}} class="slides current-1 count-{{this.slides.length}} init-animation">
 
 	{{#each this.slides}}
-		<li data-sliderbgsmall="{{urlMobile}}" data-sliderbglarge="{{urlDesktop}}" style="background:url({{urlDesktop}})">
-			
-			<div class="slide-wrapper">
-				
-				content goes here
-
+		<li>
+			<div class="slide-image-wrapper">
+				<div class="slide-image" data-sliderbgsmall="{{urlMobile}}" data-sliderbglarge="{{urlDesktop}}" style="background:url({{urlDesktop}})"></div>
+			</div>
+			<div class="slide-content-wrapper">
+				<div class="slide-content">
+					content goes here
+				</div>
 			</div>
 
 		</li>

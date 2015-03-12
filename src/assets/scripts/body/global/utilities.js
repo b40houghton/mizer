@@ -33,5 +33,46 @@ dc.utilities = {
 
         return tallest;
 
+    },
+
+    /**
+     * preload img src's in an array
+     * @param  srcArr  - array - required
+     * @param  eachLoaded  - array
+     * @param  allLoaded  - array
+     * @return NA - use callbacks
+     */
+    preloadImages : function(srcArr, eachLoaded, allLoaded){
+        
+        var totalImages = srcArr.length;
+        var currentImgCount = 0;
+        
+        function imgsDone(){
+            if (allLoaded) return allLoaded(srcArr);
+        }
+
+        function newImageCount(event){
+            // trigger eachLoaded callback, passing the 
+            console.log(event);
+            currentImgCount++;
+            if (currentImgCount == totalImages && allLoaded) imgsDone();
+        }
+        
+        for (var i = 0; i < totalImages; i++) {    
+            // put loop into self executing function to scope the index 
+            (function(index){
+                img =  new Image();
+                img.src = srcArr[index];
+                img.addEventListener('load', newImageCount);
+            })(srcArr, i)     
+        }
+
     }
+
+
+
+
+
+
+
 };

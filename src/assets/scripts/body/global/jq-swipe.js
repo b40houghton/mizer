@@ -1,3 +1,24 @@
+// Usage:
+// [jq element].swipe({
+//     addSlideClassEl: [name of element], // figure out what this does
+//     onBegin: function(data) {
+
+//         [all the thing to do when touch begins]
+
+//     },
+//     onMove: function(data) {
+        
+//         [all the things to do while touch is moving]
+
+//     },
+//     onEnd: function(data) {
+
+//         [all the things to do while touch ends]
+
+//     }
+// });
+
+
 // SWIPE PLUGIN FOR TOUCH DEVICES
 $.fn.swipe = function(settings) {
 
