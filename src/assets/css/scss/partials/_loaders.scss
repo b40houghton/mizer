@@ -28,7 +28,7 @@ $mozillaPolyfill:'';
         .ie8 & {
             background-image:url($ie8Polyfill);
         }
-
+        opacity:1;
     }
     &.loader-layer-over:before {
         position:absolute;
@@ -39,12 +39,12 @@ $mozillaPolyfill:'';
         z-index:2000;
     }
 
-    &.off {
-
-        height:0;
-        overflow:hidden;
+    &.off:before, &.off.loader-layer-over:before {
+        transition: all .5s ease;
+        opacity:0;
 
     }
+    
 
 }
 

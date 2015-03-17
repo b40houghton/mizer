@@ -9,7 +9,7 @@ dc.moduleMethod.slider = function(options){
 	 * slider constructor function
 	 * @param  {[object]} - taken from dc.moduleMethodLoad.push(..) in the module, or page
 	 * @return NA - called with "new slider(options)";
-	 */
+	 */ 
     function slider(options){
 
     	this.browserTransitionEvents 	= 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend'; // collection of all the browser specific CSS transition conplete events
@@ -19,15 +19,15 @@ dc.moduleMethod.slider = function(options){
     	this.slideEls 					= this.el.children(); // get the slides elements
     	this.slideElsImg 				= this.slideEls.find('.slide-image'); // find the elements that will host the slide images
     	this.slideElsLength 			= this.slideEls.length; // get the slides elements
-		this.options					= $.extend({
-
-			continuousLoop				: false,
+		this.currentSlide               = 1;
+        this.pauseSlider                = false;
+        this.options					= $.extend({
+            autoSlide                   : true, // run slider on continuous loop
+			continuousLoop				: false, // make the slider appear to keep going in the same direction forever
 			preloadImages				: this.slideElsLength, // number of images to preload prior to making the slider visible
-			loaderClass 				: 'loader loader-layer-over' // loader class(es) to be removed after preload 
-
-		}, options),
-
-		console.log(this.slideElsImg);
+			loaderClass 				: 'loader loader-layer-over', // loader class(es) to be removed after preload 
+			breakpoints 				: ['768'] // breakpoint divide for background image loading
+		}, options);
 
     }
 
@@ -39,45 +39,139 @@ dc.moduleMethod.slider = function(options){
 
     	var self = this;
 
-    	// attach the js listening even to the CSS transition element
-    	this.el.on(this.browserTransitionEvents, this.gotoNextSlide);
+    	var loadedQue = this.preloadInit();
 
-    	this.preload();
+    	loadedQue.done(function(data){
 
-    	return this;
+    		// once the proper number of images have been preloaded, check to see if the client is a modern browser
+    		// if not, call in the polyfill script to run the boring way with setTimout's, etc.
+    		if (!Modernizr.csstransitions && !csstransforms && dcSliderPolyFill) window.dcSliderPolyFill(slider);
+
+    		if (self.options.continuousLoop) self.setContinuous();
+            
+    		// fade in elements & remove the prealoding classes
+    		self.reveal(function(){
+
+                self.autoSlide();
+
+            });
+
+                
+
+
+    		
+    	});	
+
     }
 
 
+	slider.prototype.autoSlide = function(){
 
-    slider.prototype.preload = function(){
-    	
+        var self = this;
+
+        this.el.off(this.browserTransitionEvents).on(this.browserTransitionEvents, function(){
+
+            // add 1 to the current slide count
+            self.gotoSlide(self.currentSlide + 1);
+
+        });
+
+        // add 1 to the current slide count
+        this.gotoSlide(this.currentSlide + 1);
+
+	}
+
+    slider.prototype.run = function(){
+    
+    }
+
+    slider.prototype.gotoSlide = function(index){
+        // remove the current position class 
+        this.el.removeClass('current-' + this.currentSlide);
+
+        //console.log('current-' + this.currentSlide);
+
+        this.currentSlide = index;
+        // adjust if the new value is to high or too low 
+        
+        // STARTUP - finish index 'corrector'
+        if (this.currentSlide < 1) this.currentSlide = this.slideElsLength;
+        if (this.currentSlide > this.slideElsLength) this.currentSlide = 1;
+
+        //console.log(this.currentSlide);
+
+        this.el.addClass('current-' + this.currentSlide);
+
+    }
+
+	slider.prototype.reveal = function(callback){
+		
+        var self = this;
+
+        this.slideEls.eq(0).on(this.browserTransitionEvents, function(){
+
+            // remove the css transition event upon fade in
+            self.slideEls.eq(0).off(self.browserTransitionEvents);
+
+            // remove all the loading classes after animation
+            self.parentEl.removeClass('off ' + self.options.loaderClass);
+
+            self.el.addClass('init-animation');
+
+            if (callback) callback();
+
+        });
+
+        this.parentEl.addClass('off');
+
+        
+	}
+
+	slider.prototype.transitionEvent = function(){
+		// attach the js listening even to the CSS transition element
+    	this.slideEls.eq(0).on(this.browserTransitionEvents, this.gotoNextSlide);
+	}
+	
+	slider.prototype.placeImages = function(){
+
+		this.slideElsImg.each(function(i){
+
+			var bgUrl = this.getAttribute('data-sliderbglarge');
+
+			this.style.backgroundImage = 'url(' + bgUrl + ')';
+
+		});
+	}
+
+    slider.prototype.preloadInit = function(){
 
     	var deferred = new $.Deferred(),
     		self = this;
 
-		var srcArr = this.makeArrFromDataAttr();
+		var srcArr = this.makeArrFromDataAttrs();
 
-    	// var test = map(this.slideElsImg.toArray(), function(val){
-    	// 	console.log(val);
-    	// })
+		dc.utilities.preloadImages(srcArr, this.preloadImageStep, function(data){
 
-    	console.log(srcArr);
+			self.placeImages();
 
+			deferred.resolve(data);
 
-    // 	var getLocation = function() {
-    // var deferred = new $.Deferred();
+		});
 
-    // navigator.geolocation.getCurrentPosition(function( position ){
-    //     // Stuff with geolocation
-    //     deferred.resolve(position);
-    // });
-
-    // return promise so that outside code cannot reject/resolve the deferred
-    //return deferred.promise();
-
+    	return deferred.promise();
     }
 
-    slider.prototype.makeArrFromDataAttr = function(){
+    slider.prototype.preloadImageStep = function(data){
+
+    	//console.log(data);
+    }
+
+    slider.prototype.preloadImageComplete = function(data){
+
+    	console.log(data);
+    }
+
+    slider.prototype.makeArrFromDataAttrs = function(){
     	return $.map(this.slideElsImg, function(el){
     		//console.log(el.dataset.sliderbgsmall);
     		return (dc.breakpoints.current == 'small') ? el.dataset.sliderbgsmall : el.dataset.sliderbglarge;

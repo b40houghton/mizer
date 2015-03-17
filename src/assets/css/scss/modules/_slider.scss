@@ -7,7 +7,8 @@
     $maxTotalSlides:20;
     $slidingSpeed:.5s;
     $slidingDelay:5s;
-    $transitionTiming:'cubic-bezier(0.42,0,0.58,1)';
+    $fadeControlsInSpeed:.3s;
+    $transitionTiming:'';
     position:relative;
     overflow:hidden;
 
@@ -80,12 +81,18 @@
     
     .next {}
 
-    // if a preloader class is 
+    // if a preloader class is ???  
     &.loader {
-        background:#fff;
         // hide main slider elements until .loader class is removed
-        .slides, .navigation, .previous, .next {
-            visibility:hidden;
+        .slides > li, .indicators, .previous, .next {
+            opacity:0;
+            transition: opacity #{$fadeControlsInSpeed} ease;
+        }
+        &.off {
+            .slides > li, .navigation, .previous, .next {
+            opacity:1;
+        }
         }
     }
+
 }

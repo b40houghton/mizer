@@ -1,7 +1,22 @@
+<script>
+	
+	window.dcSliderPolyFill = function(constructorFn){
+
+		constructorFn.prototype.run = function(){
+			console.log('old');
+		}
+
+		window.dcSliderPolyFill = function(arg){
+			console.log('nope');
+			return false;
+		};
+
+	}
+</script>
+
 <div class="mzr-slider loader loader-layer-over">
 
-
-	<ul id={{this.id}} class="slides current-1 count-{{this.slides.length}} init-animation">
+	<ul id={{this.id}} class="slides current-1 count-{{this.slides.length}}">
 
 	{{#each this.slides}}
 		<li>
@@ -13,7 +28,6 @@
 					content goes here
 				</div>
 			</div>
-
 		</li>
 	{{/each}}
 	</ul>

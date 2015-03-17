@@ -691,6 +691,21 @@ if (!Array.isArray) {
 		w.attachEvent( "onresize", callMedia );
 	}
 })(this);
+var dcSliderPolyFill = function(){
+
+	function oldSlider(){}
+
+	oldSlider.prototype.run = function(){
+
+		console.log(this);
+
+	}
+
+
+	return oldSlider;
+
+
+}
 (function (document, uses, requestAnimationFrame, CACHE, LTEIE8, IE9TO11) {
 	
 	function embed(svg, g) {

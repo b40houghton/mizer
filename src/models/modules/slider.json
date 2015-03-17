@@ -24,6 +24,11 @@
             "urlDesktop": "http://lorempixel.com/1280/500/?nonce=4",
             "urlMobile": "http://lorempixel.com/770/300/?nonce=4"
 
+        },
+        {
+            "urlDesktop": "http://lorempixel.com/1280/500/?nonce=5",
+            "urlMobile": "http://lorempixel.com/770/300/?nonce=5"
+
         }
     ]
 }
