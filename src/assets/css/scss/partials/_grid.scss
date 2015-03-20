@@ -104,8 +104,8 @@ $gridCol: 12;
     margin:0 auto;
     position: relative;
     
-    @include custom-bp-min($bp-xxl + 4em){
-        width:$bp-xxl;
+    @include custom-bp-min($bp-xx-large + 4em){
+        width:$bp-xx-large;
     }
 }
 

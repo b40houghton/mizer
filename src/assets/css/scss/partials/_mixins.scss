@@ -55,7 +55,7 @@
 
 //min med breakpoint - 768px + 1px
 @mixin bp-med-min{
-    @media only screen and (min-width: $bp-med){
+    @media only screen and (min-width: $bp-medium){
         @content;
     }
 }
@@ -69,14 +69,14 @@
 
 //min xl breakpoint - 1152px + 1px
 @mixin bp-xl-min{
-    @media only screen and (min-width: $bp-xl + $onepx){
+    @media only screen and (min-width: $bp-x-large + $onepx){
         @content;
     }
 }
 
 //min xxl breakpoint - 1280px + 1px
 @mixin bp-xxl-min{
-    @media only screen and (min-width: $bp-xxl + $onepx){
+    @media only screen and (min-width: $bp-xx-large + $onepx){
         @content;
     }
 }

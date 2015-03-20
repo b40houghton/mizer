@@ -29,12 +29,12 @@ $headingTertiaryColor:$secondaryYellow;
 
 
 //one pixel
-$onepx: 0.0625em;
+$onepx: 1px;
 
-//major breakpoints in 16px based ems
-$bp-xs: 	20em; 	// 320px
-$bp-small:	30em;	// 480px
-$bp-med: 	48em; 	// 768px 
-$bp-large: 	64em; 	// 1024px
-$bp-xl: 	72em; 	// 1152px
-$bp-xxl:	80em;	// 1280px
+//major breakpoints
+$bp-x-small: 	320px;
+$bp-small:		480px;
+$bp-medium: 	768px;
+$bp-large: 		1024px;
+$bp-x-large: 	1152px;
+$bp-xx-large:	1280px;

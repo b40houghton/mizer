@@ -117,14 +117,14 @@
 
 //hide small - 320px to 768px
 .sm-hide{
-    @media only screen and (min-width:$bp-small) and (max-width: $bp-med){
+    @media only screen and (min-width:$bp-small) and (max-width: $bp-medium){
         display: none!important;
     }
 }
 
 //hide med - 768px to 1024px
 .md-hide{
-    @media only screen and (min-width:$bp-med) and (max-width: $bp-large){
+    @media only screen and (min-width:$bp-medium) and (max-width: $bp-large){
         display: none!important;
     }
 }
