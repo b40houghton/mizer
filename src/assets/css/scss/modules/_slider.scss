@@ -45,7 +45,8 @@
                 @for $j from 1 through $i {
                     
                     &.current-#{$j} {
-                        transform: translate(($translatePosition * 1%),0);
+                        //transform: translate(($translatePosition * 1%),0);
+                        margin-left:($translatePosition * 1%) * $i;
                     }
                     
                     $translatePosition:($translatePosition - $slidWidth);
@@ -53,7 +54,7 @@
             }
         }
         &.init-animation {
-            transition:transform #{$slidingSpeed} #{$transitionTiming} #{$slidingDelay};
+            transition:all #{$slidingSpeed} #{$transitionTiming} #{$slidingDelay};
         }
         &.animate-now {
             transition:transform #{$slidingSpeed} #{$transitionTiming} 0;
