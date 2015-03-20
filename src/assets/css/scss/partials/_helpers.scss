@@ -131,7 +131,7 @@
 
 //hide lg - 1025px
 .lg-hide{
-    @media only screen and (min-width:$bp-large + 0.0625em){
+    @media only screen and (min-width:$bp-large + $onepx){
         display: none!important;
     }
 }

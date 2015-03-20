@@ -100,12 +100,14 @@ $gridCol: 12;
 
 //container
 .container{
-    width:95%;
+    width:100%;
     margin:0 auto;
     position: relative;
+    padding:0 15px;
     
-    @include custom-bp-min($bp-xx-large + 4em){
-        width:$bp-xx-large;
+    // todo : need to tweak the width settings 
+    @include custom-bp-min($maxContentWidth){
+        width:$maxContentWidth;
     }
 }
 

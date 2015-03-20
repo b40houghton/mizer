@@ -27,6 +27,8 @@ $headingPrimaryColor: $primaryPurple;
 $headingSecondaryColor: $secondaryYellow;
 $headingTertiaryColor:$secondaryYellow;
 
+// maximum width of the main site content container 
+$maxContentWidth: 1280px;
 
 //one pixel
 $onepx: 1px;
@@ -38,3 +40,25 @@ $bp-medium: 	768px;
 $bp-large: 		1024px;
 $bp-x-large: 	1152px;
 $bp-xx-large:	1280px;
+
+$fonts: (
+    f18px: (
+        mobile: (
+            font-size:   "18px",
+            line-height: "18px"
+        )
+    ),
+    f100: (
+        mobile: (
+            font-size:   "16px",
+            line-height: "22px",
+            font-weight: "$font_light"
+        ),
+        tablet: (
+            font-size:   "22px",
+            line-height: "30px"
+        )
+    )
+ );
+
+
