@@ -35,29 +35,70 @@ $onepx: 1px;
 
 //major breakpoints
 $bp-x-small: 	320px;
-$bp-small:		480px;
-$bp-medium: 	768px;
-$bp-large: 		1024px;
-$bp-x-large: 	1152px;
-$bp-xx-large:	1280px;
+$bp-small:		768px;
+$bp-medium: 	1024px;
+$bp-large: 		1440px;
+$bp-x-large: 	1920px;
+$bp-xx-large: 	1920px;
 
-$fonts: (
-    f18px: (
-        mobile: (
-            font-size:   "18px",
-            line-height: "18px"
-        )
+// place the above breakpoints into a list in order to build scalable font sizes
+$bp: (
+	x-small 	: 320px, 
+	small 		: 768px,
+	medium 		: 1024px,
+	large 		: 1440px,
+	x-large 	: 1920px
+);
+
+// The following data will be run through a series of loops incorporating the $bp map above
+// This will create "responsive" solution using breakpoint overrides by increment
+// The following must ordered from smallest to largest
+// Each main property in the below map will become a class with a "font-" prefix. For example
+//     "x-small" becomes ".font-x-small" in the output css
+// The number of breakpoints that take place between max-size-bp and min-size-bp bepends on the number of intervals set  
+// see _fonts.scss for usage
+$font-sizing: (
+    x-small: (
+        max-size 	: 16px,
+        max-size-bp : "x-large",
+        min-size 	: 10px,
+        min-size-bp : "medium",
+        intervals   : 2
     ),
-    f100: (
-        mobile: (
-            font-size:   "16px",
-            line-height: "22px",
-            font-weight: "$font_light"
-        ),
-        tablet: (
-            font-size:   "22px",
-            line-height: "30px"
-        )
+    small: (
+        max-size 	: 18px,
+        max-size-bp : "x-large",
+        min-size 	: 12px,
+        min-size-bp : "medium",
+        intervals   : 4
+    ),
+    medium: (
+        max-size 	: 22px,
+        max-size-bp : "x-large",
+        min-size 	: 14px,
+        min-size-bp : "medium",
+        intervals   : 6
+    ),
+    large: (
+        max-size 	: 42px,
+        max-size-bp : "x-large",
+        min-size 	: 22px,
+        min-size-bp : "medium",
+        intervals   : 10
+    ),
+    x-large: (
+        max-size 	: 60px,
+        max-size-bp : "x-large",
+        min-size 	: 28px,
+        min-size-bp : "medium",
+        intervals   : 10
+    ),
+    xx-large: (
+        max-size 	: 140px,
+        max-size-bp : "x-large",
+        min-size 	: 80px,
+        min-size-bp : "medium",
+        intervals   : 10
     )
  );
 
