@@ -27,7 +27,7 @@ var paths = {
             root: 'src/assets/scripts/',
             head: 'src/assets/scripts/head/**/*.js',
             body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
-            build: ['src/assets/scripts/*.js']
+            build: ['src/assets/scripts/**/*.js', '!src/assets/scripts/archive', '!src/assets/scripts/body']
         },
         image: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
         css: 'src/assets/css/scss/**/*.scss',
@@ -81,12 +81,12 @@ gulp.task('scripts', function () {
 // scripts build task - minify and place in dist
 gulp.task('build-scripts', function () {
     return gulp.src(paths.src.scripts.build)
-        .pipe(gulp.dest('./dist/assets/scripts/'))
+        .pipe(gulp.dest('./dist/assets/scripts'))
         .pipe(plugins.uglify())
         .pipe(plugins.rename(function (path) {
             path.basename += ".min";
         }))
-        .pipe(gulp.dest('./dist/assets/scripts/'));
+        .pipe(gulp.dest('./dist/assets/scripts'));
 });
 
 //compile scss and sourcemaps into main.css and appropriate files
@@ -114,8 +114,9 @@ gulp.task('build-styles', function () {
 });
 
 //optimize images
-gulp.task('images', function () {
+gulp.task('images', ['sprites'], function () {
     return gulp.src(paths.src.image)
+        .pipe(plugins.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
         .pipe(gulp.dest(paths.dist.image));
 });
 
@@ -138,7 +139,7 @@ gulp.task('html', function () {
         .pipe(plugins.rename(function (path) {
             path.extname = '.html';
         }))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist'));
 });
 
 //run build specific tasks

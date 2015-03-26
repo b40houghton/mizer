@@ -23,6 +23,7 @@
     "gulp-changed": "^1.1.1",
     "gulp-concat": "^2.4.3",
     "gulp-hb": "^1.1.0",
+    "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^0.8.0",
     "gulp-minify-css": "^0.4.3",
     "gulp-nodemon": "^1.0.5",
