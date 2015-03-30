@@ -6,3 +6,26 @@
 
 //module imports
 @import 'modules/modules';
+
+// global styles
+
+html {
+    background: $backgroundColor;
+    color: $bodyColor;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100%;
+}
+
+
+body{
+  text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+}
+p{
+  line-height:1.5em;
+}
+
+hr{
+  border-left:0;
+}
