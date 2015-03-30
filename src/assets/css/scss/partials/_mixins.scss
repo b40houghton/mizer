@@ -32,6 +32,21 @@
     display: block;
 }
 
+
+
+// loop through all breakpoints to build the necessary mixins
+@each $key, $value in $bp {
+    //min small breakpoint - 320px + 1px
+    @mixin bp-small-min{
+        @media only screen and (min-width: $bp-small){
+            @content;
+        }
+    }
+}
+
+
+
+
 //custom bp max - used for hide helpers
 @mixin custom-bp-max($width){
     @media only screen and (max-width:$width){

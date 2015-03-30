@@ -13,13 +13,13 @@
 h1, h2, h3, h4, h5, h6, p {
   margin:0 0;
   line-height:1.2;
+  font-size:16px;
 }
 
 
 // the following uses the $bp and $font-sizing maps from _variables.scss
 // the custom-bp-max and custom-bp-min mixins are also used
-//@debug $font-sizing;
-
+// 
 // the big for loop to start the whole process
 @each $key, $value in $font-sizing {
 
@@ -69,11 +69,3 @@ h1, h2, h3, h4, h5, h6, p {
 
 	}
 }
-
-
-@function font($name, $breakpoint, $style) {
-  @return unquote(nested-map-get($fonts, $name, $breakpoint, $style));
-}
-
-
-// custom-bp-max($width){

@@ -43,12 +43,15 @@ $bp-xx-large: 	1920px;
 
 // place the above breakpoints into a list in order to build scalable font sizes
 $bp: (
-	x-small 	: 320px, 
-	small 		: 768px,
-	medium 		: 1024px,
-	large 		: 1440px,
-	x-large 	: 1920px
+	xsm 	: 320px, 
+	sm 		: 768px,
+	med 	: 1024px,
+	lg 		: 1440px,
+	xlg 	: 1920px
 );
+
+// a temporary fix for the fact that we are using "$breakpoints" instead of "$bp"
+$breakpoints: $bp;
 
 // The following data will be run through a series of loops incorporating the $bp map above
 // This will create "responsive" solution using breakpoint overrides by increment
@@ -58,46 +61,46 @@ $bp: (
 // The number of breakpoints that take place between max-size-bp and min-size-bp bepends on the number of intervals set  
 // see _fonts.scss for usage
 $font-sizing: (
-    x-small: (
+    xsm: (
         max-size 	: 16px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 10px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 2
     ),
-    small: (
+    sm: (
         max-size 	: 18px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 12px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 4
     ),
-    medium: (
+    med: (
         max-size 	: 22px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 14px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 6
     ),
-    large: (
+    lg: (
         max-size 	: 42px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 22px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 10
     ),
-    x-large: (
+    xlg: (
         max-size 	: 60px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 28px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 10
     ),
-    xx-large: (
+    xxlg: (
         max-size 	: 140px,
-        max-size-bp : "x-large",
+        max-size-bp : "xlg",
         min-size 	: 80px,
-        min-size-bp : "medium",
+        min-size-bp : "med",
         intervals   : 10
     )
  );

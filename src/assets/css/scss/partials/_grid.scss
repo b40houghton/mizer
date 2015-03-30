@@ -10,59 +10,84 @@ $gridCol: 12;
     transition: width 300ms;
 }
 
-
-//xs grid and default grid loop
-@for $i from 1 through $gridCol{
-    .xs-grid-#{$i},
-    .grid-#{$i}{
-        width:percentage($i/$gridCol) - (2*$gridGutter);
-    }
-}
-
-//sm grid loop
-@include bp-small-min{
-    @for $i from 1 through $gridCol{
-        .sm-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
+@each $key, $value in $breakpoints {
+    @include bp-small-min{
+        @for $i from 1 through $gridCol {
+            .grid-#{$key}-#{$i}{
+                width:percentage($i/$gridCol) - (2*$gridGutter);
+            }
         }
     }
 }
 
-//med grid loop
-@include bp-med-min{
-    @for $i from 1 through $gridCol{
-        .md-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-}
 
-//large grid loop
-@include bp-large-min{
-    @for $i from 1 through $gridCol{
-        .lg-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-}
+// //xs grid and default grid loop
+// @for $i from 1 through $gridCol{
+//     .xs-grid-#{$i},
+//     .grid-#{$i}{
+//         width:percentage($i/$gridCol) - (2*$gridGutter);
+//     }
+// }
 
-//x-large grid loop
-@include bp-xl-min{
-    @for $i from 1 through $gridCol{
-        .xl-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-}
 
-//xx-large grid loop
-@include bp-xxl-min{
-	@for $i from 1 through $gridCol{
-        .xxl-grid-#{$i}{
-            width:percentage($i/$gridCol) - (2*$gridGutter);
-        }
-    }
-}
+
+
+// //xs grid and default grid loop
+// @for $i from 1 through $gridCol{
+//     .xs-grid-#{$i},
+//     .grid-#{$i}{
+//         width:percentage($i/$gridCol) - (2*$gridGutter);
+//     }
+// }
+
+
+
+
+
+// //sm grid loop
+// @include bp-small-min{
+//     @for $i from 1 through $gridCol{
+//         .sm-grid-#{$i}{
+//             width:percentage($i/$gridCol) - (2*$gridGutter);
+//         }
+//     }
+// }
+
+// //med grid loop
+// @include bp-med-min{
+//     @for $i from 1 through $gridCol{
+//         .md-grid-#{$i}{
+//             width:percentage($i/$gridCol) - (2*$gridGutter);
+//         }
+//     }
+// }
+
+// //large grid loop
+// @include bp-large-min{
+//     @for $i from 1 through $gridCol{
+//         .lg-grid-#{$i}{
+//             width:percentage($i/$gridCol) - (2*$gridGutter);
+//         }
+//     }
+// }
+
+// //x-large grid loop
+// @include bp-xl-min{
+//     @for $i from 1 through $gridCol{
+//         .xl-grid-#{$i}{
+//             width:percentage($i/$gridCol) - (2*$gridGutter);
+//         }
+//     }
+// }
+
+// //xx-large grid loop
+// @include bp-xxl-min{
+// 	@for $i from 1 through $gridCol{
+//         .xxl-grid-#{$i}{
+//             width:percentage($i/$gridCol) - (2*$gridGutter);
+//         }
+//     }
+// }
 
 
 //offset offset loop
