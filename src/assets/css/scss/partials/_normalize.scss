@@ -7,7 +7,7 @@
  */
 
 html {
-  font-family: sans-serif; /* 1 */
+  //font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -192,16 +192,6 @@ svg:not(:root) {
 
 figure {
   margin: 1em 40px;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- */
-
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
 }
 
 /**
@@ -414,4 +404,39 @@ table {
 td,
 th {
   padding: 0;
+}
+
+
+//
+//
+// custom normalize
+//
+//
+// box-sizing
+*,
+*:before,
+*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit; 
+}
+
+html {
+    background: $backgroundColor;
+    color: $bodyColor;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100%;
+}
+
+
+body{
+  text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+}
+p{
+  line-height:1.5em;
+}
+
+hr{
+  border-left:0;
 }
