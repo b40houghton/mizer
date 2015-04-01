@@ -7,14 +7,33 @@
 //module imports
 @import 'modules/modules';
 
-// uncatagorical styles
-body{
-	text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+// global styles
+
+html {
+    background: $backgroundColor;
+    color: $bodyColor;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100%;
 }
+
+
+body{
+  text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+}
+
 p{
-	line-height:1.5em;
+  line-height:1.5em;
 }
 
 hr{
-	border-left:0;
+  border-left:0;
+}
+
+.module {
+    background:$white;
+    padding:2em;
+    line-height: 1.375em;
+    box-shadow: rgba(0,0,0,0.2) 0 10px 10px -5px
 }

@@ -1,6 +1,6 @@
-dc.appMethod = dc.appMethod || {};
+mzr.appMethod = mzr.appMethod || {};
 
-dc.appMethod.testapp = function(options){
+mzr.appMethod.testapp = function(options){
 
     console.log('this ia a test app. boom!');
     console.log(options);

@@ -7,7 +7,7 @@
             @extend .link !optional;
             font-weight: 300;
             
-            @include bp-large-min{
+            @include bp('lg'){
                 &:hover{
                     text-shadow: -0.125px 0 0 #333, 0.125px 0 0 #333;
                 }

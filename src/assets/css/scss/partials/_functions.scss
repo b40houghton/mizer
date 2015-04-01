@@ -1,0 +1,58 @@
+// check to see if a key is last in a particular map
+@function isLast($map, $key) {
+  
+  $mapLength: length($map);
+  $loopCounter: 1;
+
+  // $k = key; $v = value; $m = map
+  @each $k, $v in $map {
+  	
+  	@if ($loopCounter == $mapLength) {
+
+  		@if ($key == $k) {
+
+  			@return true;
+
+  		} @else {
+
+  			@return false;
+
+  		}
+  	}
+
+  	$loopCounter: $loopCounter + 1;
+
+  }
+
+  @return false;
+}
+
+// check to see if a key is first in a particular map
+@function isFirst($map, $key) {
+  
+  $mapLength: length($map);
+  $loopCounter: 1;
+
+  // $k = key; $v = value; $m = map
+  @each $k, $v in $map {
+  	
+  	@if ($loopCounter == 1) {
+
+  		@if ($key == $k) {
+
+  			@return true;
+
+  		} @else {
+
+  			@return false;
+
+  		}
+  	}
+
+  	$loopCounter: $loopCounter + 1;
+
+  }
+
+  @return false;
+}
+

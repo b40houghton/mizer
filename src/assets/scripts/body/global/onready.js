@@ -34,7 +34,7 @@
         //polyfill the flexbox
         if (!Modernizr.flexbox) {
             $('.equal-heights').each(function () {
-                dc.utilities.getSetTallest($(this).children('[class*="grid-"]').height('auto'), true);
+                mzr.utilities.getSetTallest($(this).children('[class*="grid-"]').height('auto'), true);
             });
         }
         

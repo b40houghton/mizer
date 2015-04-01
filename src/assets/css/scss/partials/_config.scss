@@ -1,0 +1,109 @@
+//colors
+$white: #ffffff;
+$black: #000000;
+$primaryPurple:#480a3c;
+$secondaryYellow:#ffcd00;
+
+//default body
+$backgroundColor:#d7d1c4;
+$bodyColor: $black;
+
+//default fonts
+$headingFont:'Lobster', sans-serif;
+$bodyFont: 'Petrona', serif;
+
+//button colors
+$primaryBtnColor: $primaryPurple;
+$secondaryBtnColor: #666;
+$tertiaryBtnColor: #999;
+
+//link colors
+$primaryLinkColor: #666666;
+$secondaryLinkColor:#666666;
+$tertiaryLinkColor: #999999;
+
+//heading colors
+$headingPrimaryColor: $primaryPurple;
+$headingSecondaryColor: $secondaryYellow;
+$headingTertiaryColor:$secondaryYellow;
+
+// maximum width of the main site content container 
+$maxContentWidth: 1280px;
+
+$font-imports: 'http://fonts.googleapis.com/css?family=Lobster',
+                'http://fonts.googleapis.com/css?family=Petrona';
+
+// place the above breakpoints into a list in order to build scalable font sizes
+$breakpoints: (
+	xsm 	: 320px, 
+	sm 		: 768px,
+	med 	: 1024px,
+	lg 		: 1440px,
+	xlg 	: 1920px
+);
+
+// make a shorthand for accessing $breakpoints
+$bp: $breakpoints;
+
+// The following data will be run through a series of loops incorporating the $breakpoints map above
+// This will create "responsive" solution using breakpoint overrides by increment
+// 
+// The following must be ordered from smallest to largest
+// 
+// Each main property in the below map will become a class with a "font-" prefix. For example
+//     "xsm" becomes ".font-xsm" in the output css
+//     
+//  If "static-size" exists as a key in the map, there will be breakpoints set. This property sets a global font 
+//      class to apply to all breakpoints.
+//     
+// The number of breakpoints that take place between max-size-bp and min-size-bp depends on the number of intervals set  
+// see _fonts.scss
+$font-sizing: (
+    xsm: (
+        max-size 	: 16px,
+        max-size-bp : "xlg",
+        min-size 	: 10px,
+        min-size-bp : "med",
+        intervals   : 2
+    ),
+    sm: (
+        max-size 	: 18px,
+        max-size-bp : "xlg",
+        min-size 	: 12px,
+        min-size-bp : "med",
+        intervals   : 4
+    ),
+    med: (
+        max-size 	: 22px,
+        max-size-bp : "xlg",
+        min-size 	: 14px,
+        min-size-bp : "med",
+        intervals   : 6
+    ),
+    lg: (
+        max-size 	: 42px,
+        max-size-bp : "xlg",
+        min-size 	: 22px,
+        min-size-bp : "med",
+        intervals   : 10
+    ),
+    xlg: (
+        max-size 	: 60px,
+        max-size-bp : "xlg",
+        min-size 	: 28px,
+        min-size-bp : "med",
+        intervals   : 10
+    ),
+    xxlg: (
+        max-size 	: 140px,
+        max-size-bp : "xlg",
+        min-size 	: 80px,
+        min-size-bp : "med",
+        intervals   : 10
+    ),
+    18px: (
+        static-size : 18px
+    )
+ );
+
+

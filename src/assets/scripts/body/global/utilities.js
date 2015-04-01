@@ -1,4 +1,4 @@
-dc.utilities = {
+mzr.utilities = {
 
     // receive a string and convert it to a jQuery object. if 'selector' is already a jQuery DOM object, it is simply passed through 
     returnStringAsJqObject : function(selector){
@@ -9,7 +9,7 @@ dc.utilities = {
         // selector : jQuery string selector or jQuery dom object
         // callback : function called with the jquery object passed through
     runIfElLength : function(selector, callback){
-        var _el = dc.utilities.returnStringAsJqObject(selector);
+        var _el = mzr.utilities.returnStringAsJqObject(selector);
         if (_el.length) callback(_el);
     },
 
@@ -19,7 +19,7 @@ dc.utilities = {
         // setHeights   : boolean - indicated whether or not to set the objects to be the same height
     getSetTallest : function(selector, setHeights){
         
-        var _el         = dc.utilities.returnStringAsJqObject(selector),
+        var _el         = mzr.utilities.returnStringAsJqObject(selector),
             tallest     = 0;
         
         _el.each(function(){

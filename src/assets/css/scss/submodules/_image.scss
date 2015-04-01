@@ -1,4 +1,4 @@
-.image{
+.image {
 	position: relative;
 
 	.play{
@@ -11,7 +11,7 @@
             display: none;
         }
 
-		@include bp-large-min{
+		@include bp('lg'){
 			bottom:7%;
 		}
 	}
@@ -30,7 +30,7 @@
             }
             
 
-			@include bp-large-min{
+			@include bp('lg'){
 				height: 2.5em;
 				width: 2.5em;
 

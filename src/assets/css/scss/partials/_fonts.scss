@@ -1,8 +1,92 @@
+//
+// IMPORT GOOGLE FONTS
+//
+
+// todo: for lop of $font-imports {
+
 //Lobster
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
 //Petrona
 @import url(http://fonts.googleapis.com/css?family=Petrona);
+
+// clear the font size defaults
+h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
+  margin:0;
+  line-height:1.2;
+  font-size:16px;
+}
+
+
+
+// the following uses the $bp and $font-sizing maps from _config.scss
+// the bp mixin from _mixins.scss is also used
+// see note above $font-sizing map in _config.scss
+
+// the big for loop to start the whole process
+@each $key, $value in $font-sizing {
+
+	// before setting any breakpoint values, set the base size
+	.font-#{$key} {
+		
+		@if (map-has-key($value, 'static-size')) {
+
+			font-size:map-get($value, 'static-size');
+
+		} @else {
+
+			font-size:map-get($value, 'min-size');
+			
+			// iitially set increment control to false
+			$beginIncrement: false;
+			$endIncrement: false;
+
+			// get the difference between the font sizes
+			$incrementDifference: map-get($value, 'max-size') - map-get($value, 'min-size');
+			
+			// get value from the named max breakpoint size
+			$breakpointMax: map-get($value, 'max-size-bp');
+			
+			// get value from the named min breakpoint size
+			$breakpointMin: map-get($value, 'min-size-bp');
+
+			// get the difference between the min and max breakpoints
+			$breakpointDifference: map-get($bp, $breakpointMax) - map-get($bp, $breakpointMin);
+			
+			$incrementNumber: map-get($value, 'intervals');
+			
+			// calculate the unit in pixels
+			$pixelsPerincrement: $incrementDifference / $incrementNumber;
+
+			// calculate the unit percentage
+			$intervalValue: $breakpointDifference / $incrementNumber;
+
+			// now loop though the increments in order to provide the new font size changes between preakpoints
+			@for $i from 1 through $incrementNumber {
+
+				// get the new breakpoint value buy adding the minimum value to the interval increase
+				$newBreakpointValue: round(map-get($bp, $breakpointMin) + ($intervalValue * $i));
+
+				@include bp(round($newBreakpointValue)){
+					// set the font size to build on the minimum size and the add the per incremenet amount in the loop
+					font-size:map-get($value, 'min-size') + round($i * $pixelsPerincrement);
+
+				}
+
+			}
+		}
+
+	}
+}
+
+//
+//  global font variations
+//  
+
+// all caps
+.caps {
+	text-transform: capitalize;
+}
 
 .text-left{
   text-align: left;
