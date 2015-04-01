@@ -3,7 +3,7 @@
 //gradient
 @mixin gradient($degree, $topColor, $topValue, $bottomColor, $bottomValue){
     background-color:$topColor;
-    background-image: linear-gradient($topColor $topValue, $bottomColor $bottomValue); 
+    background-image: linear-gradient($degree, $topColor $topValue, $bottomColor $bottomValue); 
 }
  
 @mixin clearfix{
