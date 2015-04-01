@@ -22,10 +22,18 @@ html {
 body{
   text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
 }
+
 p{
   line-height:1.5em;
 }
 
 hr{
   border-left:0;
+}
+
+.module {
+    background:$white;
+    padding:2em;
+    line-height: 1.375em;
+    box-shadow: rgba(0,0,0,0.2) 0 10px 10px -5px
 }

@@ -1,12 +1,5 @@
 /* helper classes*/
 
-.module{
-    background:$white;
-    padding:2em;
-    line-height: 1.375em;
-    box-shadow: rgba(0,0,0,0.2) 0 10px 10px -5px
-}
-
 .pull-left{
     margin-left: 0;
 }
@@ -116,70 +109,65 @@
 }
 
 
-// show hide helpers
-
-
-// hide elements helpers
-$hideLoopCounter: 1;
+// hide elements helper
+//  - hiding any given breakpoint will also hide at breakpoints below it
 @each $key, $value in $bp {
-    @media only screen and (max-width: $value) {
+    
+    $minMax: if(isLast($bp, $key), 'min', 'max');
+    $bpAdd: if(isLast($bp, $key), 1, 0);
+
+    // set breakpoint
+    @media only screen and (#{$minMax}-width: $value + $bpAdd) {
         .hide-#{$key} {
             display: none!important;
         }
     }
+}
 
-    @if (isLast($bp, $key)){
+// show elements helper
+//  - unlike the hide helper, the show helper only shows the element for a particular breakpoint
+//  - breakpoints above and below a targeted breapoint are ignored
 
-        @media only screen and (min-width: $value + 1) {
-            .hide-#{$key} {
-                display: none!important;
+[class*='show-'] {
+    display:none !important;
+}
+
+$previousShowValue: 0;
+$previousShowKey: 0;
+@each $key, $value in $bp {
+
+    @if (isFirst($bp, $key)) {
+
+        @media only screen and (max-width: $value) {
+            .show-#{$key} {
+                display: inline-block!important;
+                display: initial!important;
+            }
+        }
+
+    } @else {
+
+        @media only screen and (min-width: $previousShowValue) and (max-width: $value) {
+            .show-#{$previousShowKey} {
+                display: inline-block!important;
+                display: initial!important;
             }
         }
 
     }
-}
 
+    @if (isLast($bp, $key)) {
 
+        @media only screen and (mim-width: $value + 1px) {
+            .show-#{$key} {
+                display: inline-block!important;
+                display: initial!important;
+            }
+        }
 
-
-
-
-
-
-
-
-
-//hide small - 320px to 768px
-.sm-hide{
-    @media only screen and (min-width:$bp-small) and (max-width: $bp-medium){
-        display: none!important;
     }
-}
 
-//hide med - 768px to 1024px
-.md-hide{
-    @media only screen and (min-width:$bp-medium) and (max-width: $bp-large){
-        display: none!important;
-    }
-}
+    $previousShowValue: $value;
+    $previousShowKey: $key;
 
-//hide lg - 1025px
-.lg-hide{
-    @media only screen and (min-width:$bp-large + $onepx){
-        display: none!important;
-    }
-}
-
-//hide xl - 1152px
-.xl-hide{
-    @include bp-xl-min{
-        display: none!important;
-    }
-}
-
-//hide xxl - 1280px
-.xxl-hide{
-    @include bp-xxl-min{
-        display: none!important;
-    }
 }

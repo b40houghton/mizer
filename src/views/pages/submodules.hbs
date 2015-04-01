@@ -48,30 +48,30 @@
                         your site. Let's start simple with a button. A button will typically follow the same design throughout a site, granted a few minor changes. With Mizer we 
                         can set a default style, and easily call in the differences between buttons.</p>
                         <div class="row">
-                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+                        	<div class="grid-xsm-12 grid-sm-4 no-margin-bottom">
 		                        <p class="text-center">First, we create the Handlebars View, src/views/submodules/button.hbs:</p>
                         	</div>
-                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+                        	<div class="grid-xsm-12 grid-sm-4 no-margin-bottom">
                         		<p class="text-center">Next, we create the JSON model, src/models/submodules/button.json</p>
                         	</div>
-                        	<div class="xs-grid-12 sm-grid-4 no-margin-bottom">
+                        	<div class="grid-xsm-12 grid-sm-4 no-margin-bottom">
                         		<p class="text-center">Lastly, we create the SASS styles, src/assets/css/scss/submodules/_button.scss:</p>
                         	</div>
                         </div> 
                         <div class="row equal-heights">
-	                        <code class="xs-grid-12 sm-grid-4">
+	                        <code class="grid-xsm-12 grid-sm-4">
 	                        	<span class="t">&lt;button <span class="a">class=<span class="s">"button &#123;&#123;'type'&#125;&#125;"</span></span>&gt;</span><br />
 	                        		<span class="col1">&#123;&#123;'content'&#125;&#125;<span><br />
                         		<span class="t">&lt;/button&gt;</span>
 	                        </code>
-	                        <code class="xs-grid-12 sm-grid-4">
+	                        <code class="grid-xsm-12 grid-sm-4">
 	                        	{<br />
 									<span class="col1 s">"name"</span> : <span class="s">"button"</span><br />
 									<span class="col1 s">"type"</span> : <span class="s">"primary"</span><br />
 									<span class="col1 s">"content"</span> : <span class="s">"Default Button"</span><br />
 								}
 	                        </code>
-	                        <code class="xs-grid-12 sm-grid-4">
+	                        <code class="grid-xsm-12 grid-sm-4">
 		                        <span class="t">.button{</span><br />
 			                        <span class="t col1">&amp;.primary{</span><br />
 		                        		<span class="a col2">background:</span><span class="s">#333333</span><span class="a">;</span><br />

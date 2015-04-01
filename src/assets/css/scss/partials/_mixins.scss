@@ -17,7 +17,6 @@
     }
 }
 
-
 //opacity
 @mixin opacity($value){
     opacity: $value;
@@ -34,64 +33,68 @@
 
 
 
-// loop through all breakpoints to build the necessary mixins
-@each $key, $value in $bp {
-    //min small breakpoint - 320px + 1px
-    @mixin bp-small-min{
-        @media only screen and (min-width: $bp-small){
+// bp (breakpoint) mixin
+// these mixins build breakpoints mixins based off of the breakpoint matrix in the main configuration file
+//      or from a custom number entered into the mixin
+//      
+// Paramters: 
+//      - $breakpoint:  either a string referenceing a key value from $breakpoints or a number (with unit)
+//      - $minOrMax:    string indicating whether to declare min-width or max-width on the media query
+//                          - if no value is given, the mixin defaults to min-width   
+//      
+// usage example:
+//      
+//      // pull in the values from the already established 'med' key in the $breakpoints map 
+//      // uses min-width in the media query
+//      .someclass {
+//          @include bp('med') {
+//              some: style;
+//          }
+//      }
+//      
+//      // use a custom breakpoint 
+//      // uses max-width in the media query
+//      .someclass {
+//          @include bp(1000px, 'max') {
+//              some: style;
+//          }
+//      }
+// 
+// using @include bp-min('med') will log an error if the 'med' key does not exist in the breakpoints map
+@mixin bp($breakpoint, $minOrMax: 'min'){
+    
+    // check to se if the breakpoint parameter is a string
+    @if (type-of($breakpoint) == 'string') {
+
+        // for error handliing, set variable to make true when value is found 
+        $isInMap: false;
+
+        // loop through all the breakpoints in the breakpoint map
+        @each $key, $value in $breakpoints {
+            
+            // check to see if a passed in breakpoint parameter matches the current key in the map loop, if so, set media query based map value
+            @if ($breakpoint == $key){
+                @media only screen and (#{$minOrMax}-width: $value){
+                    @content;
+                }
+                // map value was found, so set to true
+                $isInMap: true;
+            } 
+        }
+
+        // if the key does not exist, $isInMap will still be false - if so, throw an error
+        @if ($isInMap == false) { 
+            @error "#{$breakpoint} does not exist in the breakpoint map: #{$breakpoints}";
+
+        }
+    }
+
+    // if the $breakpoint paramater is a number, simply pass it through to the media query
+    @if (type-of($breakpoint) == 'number') {
+
+        @media only screen and (#{$minOrMax}-width: $breakpoint){
             @content;
         }
     }
-}
 
-
-
-
-//custom bp max - used for hide helpers
-@mixin custom-bp-max($width){
-    @media only screen and (max-width:$width){
-        @content;
-    }
-}
-
-//custom min breakpoint
-@mixin custom-bp-min($width){
-    @media only screen and (min-width:$width){
-        @content;
-    }
-}
-
-//min small breakpoint - 320px + 1px
-@mixin bp-small-min{
-    @media only screen and (min-width: $bp-small){
-        @content;
-    }
-}
-
-//min med breakpoint - 768px + 1px
-@mixin bp-med-min{
-    @media only screen and (min-width: $bp-medium){
-        @content;
-    }
-}
-
-//min large breakpoint - 1024px + 1px
-@mixin bp-large-min{
-    @media only screen and (min-width: $bp-large + $onepx){
-        @content;
-    }
-}
-
-//min xl breakpoint - 1152px + 1px
-@mixin bp-xl-min{
-    @media only screen and (min-width: $bp-x-large + $onepx){
-        @content;
-    }
-}
-
-//min xxl breakpoint - 1280px + 1px
-@mixin bp-xxl-min{
-    @media only screen and (min-width: $bp-xx-large + $onepx){
-        @content;
-    }
 }

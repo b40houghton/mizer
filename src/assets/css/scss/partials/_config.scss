@@ -30,19 +30,9 @@ $headingTertiaryColor:$secondaryYellow;
 // maximum width of the main site content container 
 $maxContentWidth: 1280px;
 
-//one pixel
-$onepx: 1px;
-
-//major breakpoints
-$bp-x-small: 	320px;
-$bp-small:		768px;
-$bp-medium: 	1024px;
-$bp-large: 		1440px;
-$bp-x-large: 	1920px;
-$bp-xx-large: 	1920px;
 
 // place the above breakpoints into a list in order to build scalable font sizes
-$bp: (
+$breakpoints: (
 	xsm 	: 320px, 
 	sm 		: 768px,
 	med 	: 1024px,
@@ -50,16 +40,23 @@ $bp: (
 	xlg 	: 1920px
 );
 
-// a temporary fix for the fact that we are using "$breakpoints" instead of "$bp"
-$breakpoints: $bp;
+// make a shoerhand for accessing $breakpoints
+$bp: $breakpoints;
 
-// The following data will be run through a series of loops incorporating the $bp map above
+// The following data will be run through a series of loops incorporating the $breakpoints map above
 // This will create "responsive" solution using breakpoint overrides by increment
+// 
 // The following must ordered from smallest to largest
+// 
 // Each main property in the below map will become a class with a "font-" prefix. For example
 //     "x-small" becomes ".font-x-small" in the output css
-// The number of breakpoints that take place between max-size-bp and min-size-bp bepends on the number of intervals set  
-// see _fonts.scss for usage
+//     
+//  If "static-size" exists as a key in the map, there will be breakpoints set. This property sets a global font 
+//      class to apply to all breakpoints.
+//     
+//     
+// The number of breakpoints that take place between max-size-bp and min-size-bp depends on the number of intervals set  
+// see _fonts.scss
 $font-sizing: (
     xsm: (
         max-size 	: 16px,
@@ -102,6 +99,9 @@ $font-sizing: (
         min-size 	: 80px,
         min-size-bp : "med",
         intervals   : 10
+    ),
+    18px: (
+        static-size : 18px,
     )
  );
 
