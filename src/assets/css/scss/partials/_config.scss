@@ -40,16 +40,16 @@ $breakpoints: (
 	xlg 	: 1920px
 );
 
-// make a shoerhand for accessing $breakpoints
+// make a shorthand for accessing $breakpoints
 $bp: $breakpoints;
 
 // The following data will be run through a series of loops incorporating the $breakpoints map above
 // This will create "responsive" solution using breakpoint overrides by increment
 // 
-// The following must ordered from smallest to largest
+// The following must be ordered from smallest to largest
 // 
 // Each main property in the below map will become a class with a "font-" prefix. For example
-//     "x-small" becomes ".font-x-small" in the output css
+//     "xsm" becomes ".font-xsm" in the output css
 //     
 //  If "static-size" exists as a key in the map, there will be breakpoints set. This property sets a global font 
 //      class to apply to all breakpoints.
