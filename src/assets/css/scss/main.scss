@@ -7,33 +7,55 @@
 //module imports
 @import 'modules/modules';
 
-// global styles
+// global styles here
 
-html {
-    background: $backgroundColor;
-    color: $bodyColor;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: auto;
-    min-height: 100%;
+html{
+  background:#eee;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 100%;
 }
 
+.font-heading{
+  font-family: 'Lobster';
+}
+
+h1,h2,h3,h4,h5,h6{
+  @extend .font-heading;
+}
+
+.font-body{
+  font-family: 'Petrona';
+}
+
+nav{
+
+  
+
+  a{
+    text-decoration: none;
+    margin:0;
+    padding:0 20px 0 0;
+    color:#333;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  li:first-child a{
+    border-right:1px solid #333;
+  }
+}
 
 body{
-  text-shadow:rgba(255, 255, 255, 0.4) 1px 1px 0;
+  @extend .font-body;
 }
 
 p{
-  line-height:1.5em;
+  margin-bottom: 1em;
 }
 
-hr{
-  border-left:0;
-}
-
-.module {
-    background:$white;
-    padding:2em;
-    line-height: 1.375em;
-    box-shadow: rgba(0,0,0,0.2) 0 10px 10px -5px
+h1.font-xxlg{
+  text-shadow:1px 1px #999, 2px 2px #bbb, 3px 3px #aaa;
+  text-align: center;
 }
