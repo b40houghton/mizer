@@ -164,7 +164,9 @@ gulp.task('dev', ['clean', 'styles', 'scripts'], function (callback) {
     var called = false;
 
     return plugins.nodemon({
-        script: 'index.js'
+        script: 'index.js',
+        ext:'hbs js scss',
+        tasks: ['clean', 'styles', 'scripts']
     }).on('start', function () {
         if (!called) {
             called = true;
