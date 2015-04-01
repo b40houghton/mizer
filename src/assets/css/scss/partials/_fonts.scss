@@ -2,13 +2,10 @@
 // IMPORT GOOGLE FONTS
 //
 
-// todo: for lop of $font-imports {
 
-//Lobster
-@import url(http://fonts.googleapis.com/css?family=Lobster);
-
-//Petrona
-@import url(http://fonts.googleapis.com/css?family=Petrona);
+@each $font in $font-imports{
+  @import url($font);
+}
 
 // clear the font size defaults
 h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
