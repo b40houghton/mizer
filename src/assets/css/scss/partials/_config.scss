@@ -30,6 +30,8 @@ $headingTertiaryColor:$secondaryYellow;
 // maximum width of the main site content container 
 $maxContentWidth: 1280px;
 
+$font-imports: 'http://fonts.googleapis.com/css?family=Lobster',
+                'http://fonts.googleapis.com/css?family=Petrona';
 
 // place the above breakpoints into a list in order to build scalable font sizes
 $breakpoints: (
@@ -53,7 +55,6 @@ $bp: $breakpoints;
 //     
 //  If "static-size" exists as a key in the map, there will be breakpoints set. This property sets a global font 
 //      class to apply to all breakpoints.
-//     
 //     
 // The number of breakpoints that take place between max-size-bp and min-size-bp depends on the number of intervals set  
 // see _fonts.scss
@@ -101,7 +102,7 @@ $font-sizing: (
         intervals   : 10
     ),
     18px: (
-        static-size : 18px,
+        static-size : 18px
     )
  );
 

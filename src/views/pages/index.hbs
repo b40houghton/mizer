@@ -43,19 +43,20 @@
                     </div>
                 </div>
                 <script>
-                    dc.moduleMethodLoad.push({
-                            name    : 'testMethod',
-                            options : {}
+                    mzr.moduleMethodLoad.push({
+                        name    : 'testMethod',
+                        options : {
+                            some: 'option'
+                        }
                     });
                 </script>
 
                 <script>
-                    dc.moduleMethodLoad.push({
-                            name    : 'dynamicLoad',
-                            options : {
-                                name    : 'testapp',
-                                files   : ['/assets/scripts/apps/test-app.js']
-                            }
+                    mzr.appMethodLoad.push({
+                        files: ['/assets/scripts/apps/test-app.js'],
+                        options: {
+                            name: 'testapp',
+                        }
                     });
                 </script>
                 <div class="row">

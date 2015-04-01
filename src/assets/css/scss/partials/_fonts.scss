@@ -2,12 +2,15 @@
 // IMPORT GOOGLE FONTS
 //
 
+// todo: for lop of $font-imports {
+
 //Lobster
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
 //Petrona
 @import url(http://fonts.googleapis.com/css?family=Petrona);
 
+//}
 
 // clear the font size defaults
 h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
@@ -15,6 +18,8 @@ h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
   line-height:1.2;
   font-size:16px;
 }
+
+
 
 // the following uses the $bp and $font-sizing maps from _config.scss
 // the bp mixin from _mixins.scss is also used
