@@ -27,7 +27,7 @@ var paths = {
             root: 'src/assets/scripts/',
             head: 'src/assets/scripts/head/**/*.js',
             body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
-            build: ['src/assets/scripts/**/*.js', '!src/assets/scripts/archive', '!src/assets/scripts/body']
+            build: ['src/assets/scripts/**/*.js', '!src/assets/scripts/archive', '!src/assets/scripts/body', '!src/assets/scripts/helpers']
         },
         image: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
         css: 'src/assets/css/scss/**/*.scss',
