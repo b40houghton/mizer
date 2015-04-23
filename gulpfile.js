@@ -93,7 +93,7 @@ gulp.task('build-scripts', function () {
 gulp.task('styles', function () {
     return gulp.src(paths.src.css)
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sass())
+        .pipe(plugins.sass({errLogToConsole: true}))
         .pipe(plugins.autoprefixer(browsers))
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest('src/assets/css/'))
