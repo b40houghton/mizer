@@ -10,14 +10,52 @@ $gridCol: 12;
     transition: width 300ms;
 }
 
-@each $key, $value in $breakpoints {
-    @media only screen and (min-width: $value){
+  // ------------------------------------------------------ //
+ // - Sets grid system with "min" values in $breakpoints - //
+// ------------------------------------------------------ //
+
+// default set to .grid-X where "X" is value from 1 to $gridCol, uses no breakpoints.
+//
+// $breakpoints{
+//    xs: (
+//      min: null,
+//      max: XXXpx
+//    ),
+//    sm: (
+//      min: XXXpx,
+//      max: XXXpx
+//    )
+// }
+//
+//  null values in 'min' are added to default class. In this case, .grid-xs-12 is equivalent to .grid-12.
+//  
+//  * Note * - No 'max' breakpoints are used for the grid system
+//  
+
+@each $key, $value in $bp {
+  @each $feature, $width in $value{
+    @if $feature == "min" {
+
+      @if not($width){
         @for $i from 1 through $gridCol {
-            .grid-#{$key}-#{$i} {
-                width:percentage($i/$gridCol) - (2*$gridGutter);
-            }
+          .grid-#{$key}-#{$i},
+          .grid-#{$i} {
+            width:percentage($i/$gridCol) - (2*$gridGutter);
+          }
         }
+      }
+
+      @else{
+        @media only screen and (#{$feature}-width: $width){
+          @for $i from 1 through $gridCol {
+            .grid-#{$key}-#{$i} {
+              width:percentage($i/$gridCol) - (2*$gridGutter);
+            }
+          } 
+        }
+      }
     }
+  }
 }
 
 // // offset offset loop
@@ -54,7 +92,7 @@ $gridCol: 12;
     @include clearfix;
     margin:0 (-$gridGutter);
     &.equal-heights{
-    	@include bp('med'){
+    	@include bp('md'){
 	        display: flex;
 	    }
     }

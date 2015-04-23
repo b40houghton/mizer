@@ -35,14 +35,37 @@ $font-imports: 'http://fonts.googleapis.com/css?family=Lobster',
 
 // place the above breakpoints into a list in order to build scalable font sizes
 $breakpoints: (
-	xsm 	: 320px, 
-	sm 		: 768px,
-	med 	: 1024px,
-	lg 		: 1440px,
-	xlg 	: 1920px
+	xs: (
+    min: null,
+    max: 479px
+  ), 
+	sm: (
+    min: 480px,
+    max: 767px
+  ),
+  md: (
+    min: 768px,
+    max: 1024px
+  ),
+  lg: (
+    min: 1025px,
+    max: 1279px
+  ),
+	xl: (
+    min: 1280px,
+    max: 1439px
+  ),
+  xxl: (
+    min: 1440px,
+    max: 1919px
+  ),
+  xxxl: (
+    min: 1920px,
+    max: null
+  )
 );
 
-// make a shorthand for accessing $breakpoints
+// // make a shorthand for accessing $breakpoints
 $bp: $breakpoints;
 
 // The following data will be run through a series of loops incorporating the $breakpoints map above
@@ -59,46 +82,46 @@ $bp: $breakpoints;
 // The number of breakpoints that take place between max-size-bp and min-size-bp depends on the number of intervals set  
 // see _fonts.scss
 $font-sizing: (
-    xsm: (
+    xs: (
         max-size 	: 16px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 10px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 2
     ),
     sm: (
         max-size 	: 18px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 12px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 4
     ),
-    med: (
+    md: (
         max-size 	: 22px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 14px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 6
     ),
     lg: (
         max-size 	: 42px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 22px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 10
     ),
-    xlg: (
+    xl: (
         max-size 	: 60px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 28px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 10
     ),
-    xxlg: (
+    xxl: (
         max-size 	: 140px,
-        max-size-bp : "xlg",
+        max-size-bp : "xxxl",
         min-size 	: 80px,
-        min-size-bp : "med",
+        min-size-bp : "md",
         intervals   : 10
     ),
     18px: (

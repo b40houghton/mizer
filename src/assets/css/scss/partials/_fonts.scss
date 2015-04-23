@@ -42,13 +42,21 @@ h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
 			$incrementDifference: map-get($value, 'max-size') - map-get($value, 'min-size');
 			
 			// get value from the named max breakpoint size
-			$breakpointMax: map-get($value, 'max-size-bp');
+			$breakpointMax: map-get($value, "max-size-bp");
+      $breakpointMaxMap: map-get($bp, $breakpointMax);
+      $breakpointMaxValue: map-get($breakpointMaxMap, "min");
 			
 			// get value from the named min breakpoint size
-			$breakpointMin: map-get($value, 'min-size-bp');
+			$breakpointMin: map-get($value, "min-size-bp");
+      $breakpointMinMap: map-get($bp, $breakpointMin);
+      $breakpointMinValue: map-get($breakpointMinMap, "min");
+
+      @if $breakpointMinValue == null{
+        $breakpointMinValue: 0px;
+      }
 
 			// get the difference between the min and max breakpoints
-			$breakpointDifference: map-get($bp, $breakpointMax) - map-get($bp, $breakpointMin);
+			$breakpointDifference:  $breakpointMaxValue - $breakpointMinValue;
 			
 			$incrementNumber: map-get($value, 'intervals');
 			
@@ -62,7 +70,7 @@ h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
 			@for $i from 1 through $incrementNumber {
 
 				// get the new breakpoint value buy adding the minimum value to the interval increase
-				$newBreakpointValue: round(map-get($bp, $breakpointMin) + ($intervalValue * $i));
+				$newBreakpointValue: round($breakpointMinValue + ($intervalValue * $i));
 
 				@include bp(round($newBreakpointValue)){
 					// set the font size to build on the minimum size and the add the per incremenet amount in the loop
