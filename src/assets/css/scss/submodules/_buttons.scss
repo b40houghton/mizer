@@ -129,7 +129,7 @@ button{
         left:-1.55em;
     }
 
-    @include bp('lg'){
+    @include bp("min", "lg"){
         &:hover{
             opacity: 0.8;
         }

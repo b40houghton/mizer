@@ -72,7 +72,9 @@ h1, h2, h3, h4, h5, h6, p, li, input, textarea, span, blockquote {
 				// get the new breakpoint value buy adding the minimum value to the interval increase
 				$newBreakpointValue: round($breakpointMinValue + ($intervalValue * $i));
 
-				@include bp(round($newBreakpointValue)){
+        $bpValueRounded: round($newBreakpointValue);
+
+				@include bp("min", $bpValueRounded){
 					// set the font size to build on the minimum size and the add the per incremenet amount in the loop
 					font-size:map-get($value, 'min-size') + round($i * $pixelsPerincrement);
 

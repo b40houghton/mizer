@@ -82,7 +82,7 @@ $gridCol: 12;
     position: relative;
     padding:0 15px;
     
-    @include bp($maxContentWidth){
+    @include bp("min", $maxContentWidth){
         width:$maxContentWidth;
     }
 }
@@ -92,7 +92,7 @@ $gridCol: 12;
     @include clearfix;
     margin:0 (-$gridGutter);
     &.equal-heights{
-    	@include bp('md'){
+    	@include bp("min", "md"){
 	        display: flex;
 	    }
     }
