@@ -15,7 +15,7 @@ var plugins = loadPlugins({
         'gulp-svg-symbols': 'symbols'
     }
 });
-
+var shell = require('shelljs');
 
 // site paths
 var paths = {
@@ -31,7 +31,9 @@ var paths = {
         },
         image: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
         css: 'src/assets/css/scss/**/*.scss',
-        svg: ['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg']
+        svg: ['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg'],
+        handlebarsInput: 'src/assets/scripts/handlebars',
+        handlebarsOutput: 'src/assets/scripts/body/global/compiled-hbs.js'
     },
     dist: {
         root: 'dist',
@@ -186,3 +188,10 @@ gulp.task('sync', ['styles', 'scripts', 'browser-sync'], function () {
 
 //default
 gulp.task('default', ['clean', 'styles']);
+
+//handlebars templates precompilation
+gulp.task('precompile', function () {
+    var commandString = 'handlebars -m ' + paths.src.handlebarsInput + ' -f ' + paths.src.handlebarsOutput;
+    shell.exec(commandString);
+    // shell.echo(commandString);
+});

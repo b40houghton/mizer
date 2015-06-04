@@ -11,6 +11,7 @@ var express = require('express'),
     gulp = require('gulp'),
     open = require('open'),
     mkdirp = require('mkdirp'),
+    shell = require('shelljs'),
 
     //views
     viewPages = __dirname + '/src/views/pages',
