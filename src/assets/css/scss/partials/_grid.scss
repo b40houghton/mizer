@@ -7,7 +7,6 @@ $gridCol: 12;
     display: inline-block;
     position: relative;
     float: left;
-    transition: width 300ms;
 }
 
   // ------------------------------------------------------ //
@@ -28,9 +27,9 @@ $gridCol: 12;
 // }
 //
 //  null values in 'min' are added to default class. In this case, .grid-xs-12 is equivalent to .grid-12.
-//  
+//
 //  * Note * - No 'max' breakpoints are used for the grid system
-//  
+//
 
 @each $key, $value in $bp {
   @each $feature, $width in $value{
@@ -51,7 +50,7 @@ $gridCol: 12;
             .grid-#{$key}-#{$i} {
               width:percentage($i/$gridCol) - (2*$gridGutter);
             }
-          } 
+          }
         }
       }
     }
@@ -81,7 +80,7 @@ $gridCol: 12;
     margin:0 auto;
     position: relative;
     padding:0 15px;
-    
+
     @include bp("min", $maxContentWidth){
         width:$maxContentWidth;
     }

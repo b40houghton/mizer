@@ -1,137 +1,122 @@
-button{
-    &:focus{
-        outline: none;
-    }
-}
+
+//----------------CONFIG------------------//
+
+//default button
+$defaultButtonColor: #000000;
+$defaultButtonBackgroundColor:transparent;
+$defaultButtonBorderColor: #000000;
+
+//default button hover
+$defaultButtonHoverColor: #ffffff;
+$defaultButtonBackgroundHoverColor:#000000;
+$defaultButtonBorderHoverColor: #ffffff;
+
+//-----------------------------------------//
+
+//primary button
+$primaryButtonColor: #ffffff;
+$primaryButtonBackgroundColor:#333333;
+$primaryButtonBorderColor:#333333;
+
+//primary button hover
+$primaryButtonHoverColor: #333333;
+$primaryButtonBackgroundHoverColor:#ffffff;
+$primaryButtonBorderHoverColor:#333333;
+
+//-----------------------------------------//
+
+//secondary button
+$secondaryButtonColor: #ffffff;
+$secondaryButtonBackgroundColor:#666666;
+$secondaryButtonBorderColor:#666666;
+
+//secondary button hover
+$secondaryButtonHoverColor: #ffffff;
+$secondaryButtonBackgroundHoverColor:#333333;
+$secondaryButtonBorderHoverColor:#333333;
+
+//-----------------------------------------//
+
+//tertiary button
+$tertiaryButtonColor: #ffffff;
+$tertiaryButtonBackgroundColor:#999999;
+$tertiaryButtonBorderColor:#999999;
+
+//tertiary button hover
+$tertiaryButtonHoverColor: #ffffff;
+$tertiaryButtonBackgroundHoverColor:#666666;
+$tertiaryButtonBorderHoverColor:#666666;
+
+//-----------------------------------------//
 
 .button{
-    color:#fff;
+    float: left;
     text-decoration: none;
-    padding:0.5em 1em;
-    margin:16px 0;
-    margin:1rem 0;
-    line-height: 32px;
-    line-height: 2rem;
-    border-radius: 12px;
-    border:0;
+    padding:0 1.25em;
+    font-size:0.875em;
+    margin:1em 0;
+    line-height: 2.5;
     text-transform: uppercase;
     display: inline-block;
+    transition: color 0.3s, border 0.3s, background 0.3s;
+
     *zoom:1;
     *display:inline;
-    
+
+    color:$defaultButtonColor;
+    border:1px solid $defaultButtonBorderColor;
+    background-color:$defaultButtonBackgroundColor;
+
     &:focus{
         outline: none;
     }
 }
-.primary{
-    @extend .button;
-    background-color: $primaryBtnColor;
-}
-.secondary{
-    @extend .button;
-    background-color: $secondaryBtnColor;
+
+.no-touch .button:hover{
+	color:$defaultButtonHoverColor;
+    border:1px solid $defaultButtonBorderHoverColor;
+    background-color:$defaultButtonBackgroundHoverColor;
 }
 
-.tertiary{
-    @extend .button;
-    background-color:$tertiaryBtnColor;
-}
-.xx-small{
+button{
 	@extend .button;
-    font-size: 0.75em;
-}
-.x-small{
-    @extend .button;
-    font-size: 0.8125em;
-}
-.small{
-    @extend .button;
-    font-size: 0.875em;
-}
-.large{
-    @extend .button;
-    font-size: 1.125em;
-}
-.x-large{
-    @extend .button;
-    font-size: 1.375em;
-}
-.btn-back{
-    position: relative;
-    text-transform: uppercase;
-    font-size: 1em;
-    background:none;
-    color:$white;
-    opacity: 1;
-    line-height: 0.8;
-    margin:0.5em 0;
-    padding-left:1.25em;
-    border:0;
-    &:focus{
-        outline: none;
-    }
-
-    &:before{
-        content: "";
-        position: absolute;
-        width:0.75em;
-        height: 0.75em;
-        transform: rotate(-45deg);
-        left: 0.2em;
-        top:0;
-        border-left: 2px solid #333;
-        border-top: 2px solid #333;
-        @include bp('lg'){
-            display: none;
-            content:none;
-        }
-    }
 }
 
-.wide{
-    padding: 0 2em;
+.button.primary{
+    color:$primaryButtonColor;
+    border:1px solid $primaryButtonBorderColor;
+    background-color:$primaryButtonBackgroundColor;
 }
 
-.btn-close{
-    top:0;
-    right:0;
-    opacity: 0.4;
-    position: absolute;
-    color:$white;
-    background: #333;
-    border:0;
-    width:2.25em;
-    height: 2.25em;  
-    border-radius: 0.25em;
-    transition: all 300ms;
-
-    &:focus{
-        outline: none;
-    }
-    &:before,
-    &:after{
-        position: absolute;
-        display: block;
-        content: "";
-        width:3.25em;
-        height:3.25em;
-        top:0.7em;
-        transform: rotate(45deg);
-    }
-
-    &:before{
-        border-left:1px solid $white;
-        left:0.55em;
-    }
-
-    &:after{
-        border-top:1px solid $white;
-        left:-1.55em;
-    }
-
-    @include bp("min", "lg"){
-        &:hover{
-            opacity: 0.8;
-        }
-    }
+.no-touch .button.primary:hover{
+	color:$primaryButtonHoverColor;
+    border:1px solid $primaryButtonBorderHoverColor;
+    background-color:$primaryButtonBackgroundHoverColor;
 }
+
+.button.secondary{
+    color:$secondaryButtonColor;
+    border:1px solid $secondaryButtonBorderColor;
+    background-color:$secondaryButtonBackgroundColor;
+}
+
+.no-touch .button.secondary:hover{
+    color:$secondaryButtonHoverColor;
+    border:1px solid $secondaryButtonBorderHoverColor;
+    background-color:$secondaryButtonBackgroundHoverColor;
+}
+
+.button.tertiary{
+    color:$tertiaryButtonColor;
+    border:1px solid $tertiaryButtonBorderColor;
+    background-color:$tertiaryButtonBackgroundColor;
+}
+
+.no-touch .button.tertiary:hover{
+	color:$tertiaryButtonHoverColor;
+    border:1px solid $tertiaryButtonBorderHoverColor;
+    background-color:$tertiaryButtonBackgroundHoverColor;
+}
+
+//hover
+

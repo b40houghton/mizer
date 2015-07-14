@@ -1,21 +1,15 @@
+$defaultLinkColor:#666666;
+$defaultLinkHoverColor:#333333;
+
 .link{
-	font-size:1.125em;
+	color:$defaultLinkColor;
 	text-decoration:none;
 	position: relative;
+	padding-right:1em;
+	transition:color 0.3s;
+}
 
-    .fa-angle-right{
-    	margin-left: 0.5em;
-    }
-    .fa-angle-left{
-    	margin-right: 0.5em;
-    }
-
-	&.link-lg{
-		font-size: 1.5em;
-	}
-    &.disabled{
-        pointer-events:none;
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
+.no-touch .link:hover{
+	color:$defaultLinkHoverColor;
+	text-decoration:underline;
 }

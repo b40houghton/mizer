@@ -4,52 +4,30 @@
 // global styles here
 
 html{
-  background:#eee;
+  background:$white;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: auto;
+  font-family:$bodyFont;
   min-height: 100%;
 }
 
-.font-heading{
-  font-family: 'Lobster';
+*,
+*:before,
+*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
 }
 
-h1,h2,h3,h4,h5,h6{
-  @extend .font-heading;
-}
+//heading fonts
 
-.font-body{
-  font-family: 'Petrona';
-}
-
-nav{
-
-
-
-  a{
-    text-decoration: none;
-    margin:0;
-    padding:0 20px 0 0;
-    color:#333;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-  li:first-child a{
-    border-right:1px solid #333;
-  }
-}
-
-body{
-  @extend .font-body;
-}
-
-p{
-  margin-bottom: 1em;
-}
-
-h1.font-xxl{
-  text-shadow:1px 1px #999, 2px 2px #bbb, 3px 3px #aaa;
-  text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family:$headingFont;
+	margin:20px 0 10px;
+	-webkit-font-smoothing:antialiased;
 }
