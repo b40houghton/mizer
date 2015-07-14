@@ -20,8 +20,7 @@ coverage
 dist/
 
 # Compiled CSS Files
-src/assets/css/main.css
-src/assets/css/browsers/ie-oldie.css
+src/assets/css/**/*.css
 
 # Compiled JS Files
 src/assets/scripts/body.js
