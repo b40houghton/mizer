@@ -12,6 +12,13 @@ html{
   min-height: 100%;
 }
 
+*,
+*:before,
+*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
 //heading fonts
 
 h1,
