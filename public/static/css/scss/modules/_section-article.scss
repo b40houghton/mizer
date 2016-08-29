@@ -1,0 +1,14 @@
+.container.first-article > .section-article {
+	padding-top:25px;
+}
+
+.container.last-article > .section-article {
+	padding-bottom: 40px;
+}
+
+.section-article {
+	background:$white;
+	padding:0 25px;
+	float:left;
+	width: 100%;
+}

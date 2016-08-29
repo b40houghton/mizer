@@ -1,7 +1,0 @@
-{
-	"name"    : "button",
-    "classes" : null,      
-	"type"	  : "primary", 
-	"size"    : null,      
-	"content" : "Button"   
-}

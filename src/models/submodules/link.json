@@ -1,8 +1,0 @@
-{
-	"name"     : "link",
-	"href"     :"#",
-    "classes"  : null,
-	"content"  : "Submodule Link",
-	"target"   : "none",
-	"previous" : false
-}

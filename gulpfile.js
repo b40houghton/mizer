@@ -1,197 +1,191 @@
 'use strict';
 
-// Load plugins
-var gulp = require('gulp');
-var loadPlugins = require('gulp-load-plugins');
-var del = require('del');
-var path = require('path');
-var fs = require('fs');
-var ms = require('merge-stream');
-var sequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var plugins = loadPlugins({
-    rename: {
-        'gulp-svg-symbols': 'symbols'
-    }
-});
-var shell = require('shelljs');
+var gulp = require('gulp'),
+	gutil = require('gulp-util'),
+	glob = require('glob'),
+	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps'),
+	gulpif = require('gulp-if'),
+	eventStream = require('event-stream'),
+	autoprefixer = require('gulp-autoprefixer'),
+	source = require('vinyl-source-stream'),
+	buffer = require('vinyl-buffer'),
+	browserify = require('browserify'),
+	watchify = require('watchify'),
+	babel = require('babelify'),
+	uglify = require('gulp-uglify'),
+	runSequence = require('run-sequence'),
+	rename = require("gulp-rename");
 
-// site paths
 var paths = {
-    src: {
-        root: ['src/'],
-        html: 'src/views/pages/*.hbs',
-        models: 'src/models/**/*.json',
-        scripts: {
-            root: 'src/assets/scripts/',
-            head: 'src/assets/scripts/head/**/*.js',
-            body: ['src/assets/scripts/body/global/**/*.js', 'src/assets/scripts/body/modules/**/*.js', 'src/assets/scripts/body/**/*.js'],
-            build: ['src/assets/scripts/**/*.js', '!src/assets/scripts/archive', '!src/assets/scripts/body', '!src/assets/scripts/helpers']
-        },
-        image: ['src/assets/images/**/*', '!src/assets/images/svg/symbols.svg'],
-        css: 'src/assets/css/scss/**/*.scss',
-        svg: ['src/assets/images/svg/*.svg', '!src/assets/images/svg/symbols.svg'],
-        handlebarsInput: 'src/assets/scripts/handlebars',
-        handlebarsOutput: 'src/assets/scripts/body/global/compiled-hbs.js'
-    },
-    dist: {
-        root: 'dist',
-        scripts: ['dist/assets/scripts/'],
-        image: 'dist/assets/images/',
-        css: 'dist/assets/css',
-        svg: ['src/assets/images/svg/']
-    }
-};
+	'styles':{
+		'src':'./public/static/css/scss/**/*.scss',
+		'dest':'./public/static/css/',
+		'build':'./build/static/css/',
+		'filename':'global'
+	},
+	'scripts':{
+		'src':'./public/static/js/bundles/entry.js',
+		'glob_src':'./public/static/js/bundles/**/entry.js',
+		'dest':'./public/static/js/',
+		'build':'./build/static/js/',
+		'filename':'global'
+	},
+	'images': {
+		'src':'./public/static/images/**/*',
+		'dest':'./public/static/images/',
+		'build':'./build/static/images/'
+	}
+}
 
-// browsers for autoprefixer
-var browsers = [
-    'ie >= 9',
-    'ie_mob >= 9',
-    'ff >= 35',
-    'chrome >= 35',
-    'safari >= 7',
-    'opera >= 25',
-    'ios >= 7',
-    'android >= 4.4',
-    'bb >= 10'
+var supported_browsers = [
+  'ie >= 9',
+  'ie_mob >= 9',
+  'ff >= 35',
+  'chrome >= 35',
+  'safari >= 7',
+  'opera >= 25',
+  'ios >= 7',
+  'android >= 4.3',
+  'bb >= 10'
 ];
 
-var svgConfig = {
-    mode: {
-        symbol: true
-    }
-};
+var env = gutil.env;
+
+/*
+	* ----------------------------- *
+	| Browserify compile/watch func |
+	* ----------------------------- *
+
+	* Browserify - entry main.js
+	* Watchify - enable watching for browserify
+	* Babelify - Babel transform for browserify
+	* Write sourcemaps if not production
+	* Uglify if production
+	* Rename to <FILENAME>-min.js if production
+*/
+
+function  compile (done, watch) {
+	glob('./public/static/js/bundles/*.js', (err, files) => {
+		if(err) done(err);
+
+		var tasks = files.map( entry => {
+
+			var b = browserify({
+				entries: [entry],
+				extensions: ['.js'],
+				debug: true,
+				cache: {},
+				packageCache: {}
+			}).transform("babelify", {
+				presets: ["es2015"]
+			});
+
+			const bundle = () => {
+				return b.bundle()
+					.on('error', function (err) { console.log(err); this.emit('end'); })
+					.pipe(source(entry))
+					.pipe(buffer())
+					.pipe(rename(function (path) {
+						path.dirname = '';
+						path.basename += '.bundle';
+					}))
+					.pipe(gulpif(env.node_env !== 'production', sourcemaps.init( { loadMaps: true } ))) // dev env only
+					.pipe(gulpif(env.node_env !== 'production', sourcemaps.write())) // dev env only
+					.pipe(gulpif(env.node_env !== 'production', gulp.dest(paths.scripts.dest))) // dev env only
+					.pipe(gulpif(env.node_env === 'production', uglify())) //prod env only
+					.pipe(gulpif(paths.scripts.filename.length && env.node_env === 'production', rename({prefix: paths.scripts.filename + '-'}))) //prod env only
+					.pipe(gulpif(env.node_env === 'production', rename({suffix: '.min'}))) //prod env only
+					.pipe(gulpif(env.node_env === 'production', gulp.dest(paths.scripts.build))); //prod env only
+			};
 
 
-//compile scripts from head and body directories
-gulp.task('scripts', function () {
-    var headScripts = gulp.src(paths.src.scripts.head)
-        .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.concat('head.js'))
-        .pipe(plugins.sourcemaps.write())
-        .pipe(gulp.dest(paths.src.scripts.root));
+			if (watch) {
+				b = watchify(b);
+				b.on('update', function () {
+					console.log('-> bundling...');
+					bundle();
+				})
+			}
 
-    var bodyScripts = gulp.src(paths.src.scripts.body)
-        .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.concat('body.js'))
-        .pipe(plugins.sourcemaps.write());
+			return bundle();
+		});
 
-    return ms(headScripts, bodyScripts).pipe(gulp.dest(paths.src.scripts.root));
-});
+		eventStream.merge(tasks).on('end', done);
+	});
+}
 
-// scripts build task - minify and place in dist
-gulp.task('build-scripts', function () {
-    return gulp.src(paths.src.scripts.build)
-        .pipe(gulp.dest('./dist/assets/scripts'))
-        .pipe(plugins.uglify())
-        .pipe(plugins.rename(function (path) {
-            path.basename += ".min";
-        }))
-        .pipe(gulp.dest('./dist/assets/scripts'));
-});
+/*
+	* ----------- *
+	| Style tasks |
+	* ----------- *
 
-//compile scss and sourcemaps into main.css and appropriate files
+	* Write sourcemaps if not on production
+	* Compile minified scss to css
+	* Apply browser prefixs with autoprefixer
+	* Rename file to <FILENAME>-min.css on production
+	* Place in destination folder
+*/
+
 gulp.task('styles', function () {
-    return gulp.src(paths.src.css)
-        .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sass({errLogToConsole: true}))
-        .pipe(plugins.autoprefixer(browsers))
-        .pipe(plugins.sourcemaps.write())
-        .pipe(gulp.dest('src/assets/css/'))
-        .pipe(reload({
-            stream: true
-        }));
+	return gulp.src(paths.styles.src)
+		.pipe(gulpif(env.node_env !== 'production', sourcemaps.init())) // dev env only
+		.pipe(sass({ outputStyle: 'compressed'}))
+		.pipe(autoprefixer(supported_browsers))
+		.pipe(gulpif(env.node_env !== 'production', sourcemaps.write())) // dev env only
+		.pipe(gulpif(env.node_env !== 'production', gulp.dest(paths.styles.dest))) // dev env only
+		.pipe(gulpif(env.node_env === 'production' && paths.styles.filename.length, rename({prefix: paths.styles.filename + '-'}))) // prod env only
+		.pipe(gulpif(env.node_env === 'production', rename({suffix: '-min'}))) // prod env only
+		.pipe(gulpif(env.node_env === 'production', gulp.dest(paths.styles.build))); // prod env only
 });
 
-//minify and place css in dist
-gulp.task('build-styles', function () {
-    return gulp.src('src/assets/css/**/*.css')
-        .pipe(gulp.dest(paths.dist.css))
-        .pipe(plugins.sourcemaps.init({ loadMaps: true }))
-        .pipe(plugins.rename(function (path) { path.basename += ".min"; }))
-        .pipe(plugins.minifyCss())
-        .pipe(plugins.sourcemaps.write({ includeContent: false }))
-        .pipe(gulp.dest(paths.dist.css));
+gulp.task('styles:watch', function () {
+	gulp.watch('./public/static/css/scss/**/*.scss', ['styles']);
 });
 
-//optimize images
-gulp.task('images', ['sprites'], function () {
-    return gulp.src(paths.src.image)
-        .pipe(plugins.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-        .pipe(gulp.dest(paths.dist.image));
+/*
+	* ------------ *
+	| Script tasks |
+	* ------------ *
+
+	* Browserify - entry main.js
+	* Watchify - enable watching for browserify
+	* Babelify - Babel transform for browserify
+	* Write sourcemaps if not production
+	* Uglify if production
+*/
+
+gulp.task('scripts', function (done) { return compile(done); });
+gulp.task('scripts:watch', function (done) { return compile(done, true); });
+
+
+/*
+	* ------------ *
+	| Images tasks |
+	* ------------ *
+
+	* move images to build folder
+*/
+
+gulp.task('images', function () {
+	return gulp.src(paths.images.src)
+		.pipe(gulp.dest(paths.images.build));
 });
 
-//build svg into single file
-gulp.task('sprites', function () {
-    return gulp.src(paths.src.svg)
-        .pipe(plugins.svgSprite(svgConfig))
-        .pipe(gulp.dest('src/assets/images/'))
-        .pipe(gulp.dest(paths.dist.image));
+/*
+	* ---------- *
+	| Build task |
+	* ---------- *
+
+	* Run scripts build task
+	* Run styles build task
+	*
+*/
+gulp.task('build', ['styles','scripts', 'images']);
+
+
+gulp.task('watch', ['styles','scripts'], function () {
+	runSequence(['styles:watch', 'scripts:watch']);
 });
 
-//build handlebars templates to html and place in dist
-gulp.task('html', function () {
-    return gulp.src(paths.src.html)
-        .pipe(plugins.hb({
-            data: paths.src.root + '/models/**/*.json',
-            helpers: paths.src.root + '/assets/scripts/helpers/*.js',
-            partials: paths.src.root + '/views/partials/**/*.hbs'
-        }))
-        .pipe(plugins.rename(function (path) {
-            path.extname = '.html';
-        }))
-        .pipe(gulp.dest('./dist'));
-});
-
-//run build specific tasks
-gulp.task('build', ['build-styles', 'build-scripts', 'html'], function () {
-    return;
-});
-
-//sync browser using browser-sync
-gulp.task('browser-sync', ['dev'], function () {
-    setTimeout(function () {
-        browserSync.init(null, {
-            proxy: "http://localhost:3000",
-            files: ["dist/**/*"],
-            port: 3001,
-            startPath: "/index"
-        });
-    }, 1000);
-});
-
-//dev using nodemon
-gulp.task('dev', ['clean', 'styles', 'scripts'], function (callback) {
-    var called = false;
-
-    return plugins.nodemon({
-        script: 'index.js',
-        ext:'hbs js scss',
-        tasks: ['clean', 'styles', 'scripts']
-    }).on('start', function () {
-        if (!called) {
-            called = true;
-            callback();
-        }
-    });
-});
-
-//delete dist folder
-gulp.task('clean', del.bind(null, ['dist']));
-
-//sync and watch
-gulp.task('sync', ['styles', 'scripts', 'browser-sync'], function () {
-    gulp.watch(['src/assets/css/scss/**/*.scss'], ['styles']);
-    gulp.watch(['src/assets/js/**/*.js'], reload);
-});
-
-//default
-gulp.task('default', ['clean', 'styles']);
-
-//handlebars templates precompilation
-gulp.task('precompile', function () {
-    var commandString = 'handlebars -m ' + paths.src.handlebarsInput + ' -f ' + paths.src.handlebarsOutput;
-    shell.exec(commandString);
-    // shell.echo(commandString);
-});
+gulp.task('default', ['styles', 'scripts']);

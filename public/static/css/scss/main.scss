@@ -1,0 +1,54 @@
+@import 'partials/partials';
+@import 'submodules/submodules';
+@import 'modules/modules';
+
+html{
+  background:$gray;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+// make font more smoother and crisp throughout
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.body,
+.base {
+	@extend %arial;
+	color: rgb(62, 80, 104);
+	font-size: 13px;
+	line-height: 18px;
+  background-repeat:no-repeat;
+  background-position: 50% 110px;
+  display: inline-block;
+  background-size:contain;
+
+	@include bp('min', 'md') {
+    background-position: 50% 0;
+    display: block;
+		font-size: 14px;
+		line-height: 24px;
+  }
+}
+
+.background-image {
+  @extend %sr-only;
+}
+
+.disable-hover,
+.disable-hover * {
+  @include bp('min','lg') {
+    pointer-events: none !important;
+  }
+}

@@ -1,0 +1,13 @@
+// hide tridion added br's
+.SiteEditCP > .container + br,
+.SiteEditCP > div + br {
+  display: none;
+}
+
+@include bp('max', 1002px) {
+	.SiteEditCP {
+		display:inline-block;
+		float:left;
+		width:100%;
+	}
+}

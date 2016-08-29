@@ -1,0 +1,56 @@
+//basic colors
+$white: #ffffff;
+$black: #000000;
+
+// color palatte
+$keytrudaGreen: #6BBF49;
+$linkGreen: #6AA755;
+$darkBlue: #3E5068;
+$navyBlue: #243C59;
+$secondaryBlue: #2d5e91;
+$deepBlue: #00275A;
+$blue: #385C90;
+$teal: #429393;
+$gray: #EEEEEE;
+$fontColor: rgb(62, 80, 104);
+
+// font family
+$arial: Arial, Helvetica, sans-serif;
+
+// maximum width of the main site content container
+$maxContentWidth: 970px;
+
+// place the above breakpoints into a list in order to build scalable font sizes
+$breakpoints: (
+	xs: (
+    min: null,
+    max: 479px
+  ),
+	sm: (
+    min: 480px,
+    max: 767px
+  ),
+  md: (
+    min: 768px,
+    max: 1024px
+  ),
+  lg: (
+    min: 1025px,
+    max: 1280px
+  ),
+	xl: (
+    min: 1281px,
+    max: 1440px
+  ),
+  xxl: (
+    min: 1441px,
+    max: 1920px
+  ),
+  xxxl: (
+    min: 1921px,
+    max: null
+  )
+);
+
+// // make a shorthand for accessing $breakpoints
+$bp: $breakpoints;

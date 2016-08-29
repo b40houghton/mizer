@@ -1,0 +1,171 @@
+/* grid variables */
+$gridGutter: 13px;
+$gridCol: 12;
+$percentageGutter:1%;
+
+[class*='grid-']{
+    margin:0 $gridGutter $gridGutter*2;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+@each $key, $value in $bp {
+  @each $feature, $width in $value{
+    @if $feature == "min" {
+
+      @if not($width){
+        @for $i from 1 through $gridCol {
+
+          $percentage: percentage($i/$gridCol);
+          $gutter: $gridGutter*2;
+
+          .grid-#{$key}-#{$i},
+          .grid-#{$i} {
+            width: calc(#{$percentage} - #{$gutter});
+          }
+        }
+      }
+
+      @else{
+        @media only screen and (#{$feature}-width: $width){
+          @for $i from 1 through $gridCol {
+
+            $percentage: percentage($i/$gridCol);
+            $gutter: $gridGutter*2;
+            $percentageGrid: $percentage - ($percentageGutter*2);
+
+            .grid-#{$key}-#{$i} {
+                width: calc(#{$percentage} - #{$gutter});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+  //offset loop
+@each $key, $value in $bp {
+  @each $feature, $width in $value{
+    @if $feature == "min" {
+
+      @if not($width){
+        @for $i from 1 through $gridCol {
+
+          $percentage: percentage($i/$gridCol);
+          $percentageOffset: $percentage + $percentageGutter;
+
+          .offset-#{$key}-#{$i},
+          .offset-#{$i} {
+            margin-left: calc(#{$percentage} + #{$gridGutter});
+          }
+        }
+      }
+
+      @else{
+        @media only screen and (#{$feature}-width: $width){
+          @for $i from 1 through $gridCol {
+
+            $percentage: percentage($i/$gridCol);
+            $percentageOffset: $percentage + $percentageGutter;
+
+            .offset-#{$key}-#{$i} {
+              margin-left: calc(#{$percentage} + #{$gridGutter});
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//container
+.container{
+    width:100%;
+    max-width: $maxContentWidth;
+    margin: 0;
+    position: relative;
+    padding: 0;
+    float: left;
+
+    @include bp("min",'md'){
+        width: calc(100% - 2em);
+        float:none;
+        display: flex;
+        align-items: flex-start;
+        margin: 0 1em;
+    }
+
+    @include bp('min', 1002px) {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+//rows
+.row{
+    @include clearfix;
+    margin:0 (-$gridGutter);
+    &.equal-heights{
+    	@include bp("min", "md"){
+	        display: flex;
+	    }
+    }
+    &.equal-heights-lg{
+      @include bp("min", "lg"){
+          display: flex;
+      }
+    }
+    &.equal-heights.row-reverse{
+      @include bp("min", "md"){
+          display: flex;
+          flex-direction: row-reverse;
+      }
+    }
+
+    &.flex-row{
+        display: flex;
+        flex-wrap:wrap;
+
+        &.align-center{
+          align-items:center;
+        }
+
+        &:before,
+        &:after{
+            flex-basis:0;
+            order:1;
+        }
+    }
+
+    &.flex-row-center{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+
+        &:before,
+        &:after{
+            flex-basis:0;
+            order:1;
+        }
+    }
+
+    &.flex-row-reverse{
+        display: flex;
+        flex-wrap:wrap;
+        flex-direction: row-reverse;
+
+        &:before,
+        &:after{
+            flex-basis:0;
+            order:1;
+        }
+    }
+}
+
+.no-csscalc.no-flexbox{
+    .row.flex-row{
+        display: inline-block;
+    }
+}

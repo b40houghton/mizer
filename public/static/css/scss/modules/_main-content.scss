@@ -1,0 +1,9 @@
+.main-content,
+.global-wrapper {
+	display:inline-block;
+	width:100%;
+
+	@include bp('min', 'md') {
+		flex:1;
+	}
+}

@@ -1,6 +1,9 @@
+.DS_Store
+
 # Logs
 logs
 *.log
+npm-debug.log*
 
 # Runtime data
 pids
@@ -13,29 +16,36 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# Sass intermediate storage
-.sass-cache
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
 
-# Distribution Folder
-dist/
-
-# Compiled CSS Files
-src/assets/css/**/*.css
-
-# Compiled JS Files
-src/assets/scripts/body.js
-src/assets/scripts/head.js
-
-# Old Gulpfiles
-gulpfile-v1.js
+# node-waf configuration
+.lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directory
-# Commenting this out is preferred by some people, see
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
-# Users Environment Variables
-.lock-wscript
+# Optional npm cache directory
+.npm
+
+# env file
+.env
+
+# Optional REPL history
+.node_repl_history
+
+# Ignore compiled data model
+data.json
+
+# Compiled CSS
+public/static/css/*.css
+
+# Compiled JS
+public/static/js/*.bundle.js
+
+# Build and build directory
+*.zip
+build/
